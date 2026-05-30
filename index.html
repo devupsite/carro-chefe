@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Carro Chefe · Arquitetura de Oferta 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --preto:#181310;--carvao:#28201A;--carvao2:#221A14;
+  --offwhite:#F5F0E8;--areia:#E0D5C5;--areia-esc:#C4B49A;
+  --tijolo:#C94B2C;--tijolo-d:rgba(201,75,44,.15);
+  --cinza:#9A8F85;--musgo:#4A6040;--linha:#3a2e22;
+  --an:#C94B2C;--pr:#4A6040;--dc:#9A8F85;--fm:#C4B49A;
+}
+html,body{height:100%}
+body{font-family:'Poppins',sans-serif;background:var(--preto);color:var(--offwhite);overflow-x:hidden}
+
+/* HEADER */
+header{
+  background:var(--preto);padding:24px 52px 20px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  border-bottom:1px solid var(--tijolo);position:sticky;top:0;z-index:100;
+}
+.h-sub{font-size:8px;letter-spacing:4px;color:var(--tijolo);text-transform:uppercase;margin-bottom:5px}
+.h-title{font-family:'Lora',serif;font-size:20px;font-weight:400;color:var(--offwhite)}
+.h-right{text-align:right}
+.h-tag{font-size:8px;letter-spacing:3px;color:var(--cinza);text-transform:uppercase;line-height:1.8}
+
+/* TABS */
+.tabs{
+  display:flex;border-bottom:1px solid var(--linha);padding:0 52px;
+  background:var(--preto);overflow-x:auto;position:sticky;top:65px;z-index:99;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tb{
+  background:none;border:none;border-bottom:2px solid transparent;
+  padding:17px 24px 15px;cursor:pointer;margin-bottom:-1px;
+  flex-shrink:0;transition:all .2s;font-family:'Poppins',sans-serif;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);
+}
+.tb:hover{color:var(--areia-esc)}
+.tb.on{color:var(--tijolo);border-bottom-color:var(--tijolo)}
+
+/* MAIN */
+main{padding:52px 52px 100px;max-width:1120px}
+.panel{display:none;animation:fu .35s ease}
+.panel.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* UTILS */
+.sec-hd{display:flex;align-items:center;gap:16px;margin-bottom:24px;margin-top:44px}
+.sec-hd:first-child{margin-top:0}
+.sec-lb{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza);white-space:nowrap}
+.sec-ln{flex:1;height:1px;background:var(--linha)}
+
+.insight{background:var(--carvao);border-left:3px solid var(--tijolo);padding:18px 22px;margin-bottom:32px}
+.ins-l{font-size:7px;letter-spacing:3px;color:var(--tijolo);text-transform:uppercase;margin-bottom:6px}
+.ins-t{font-family:'Lora',serif;font-size:13px;color:var(--areia-esc);font-style:italic;line-height:1.7}
+
+/* TIER */
+.tier-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.tier-badge{font-size:7px;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;border:1px solid}
+.tier-line{flex:1;height:1px;background:var(--linha)}
+
+/* PACK CARDS */
+.pack-grid{display:grid;gap:1px;background:var(--linha);margin-bottom:16px}
+.pack-grid.cols2{grid-template-columns:1fr 1fr}
+.pack{
+  background:var(--carvao);padding:30px 26px;
+  position:relative;overflow:hidden;border-top:3px solid var(--pc);
+  transition:background .2s;
+}
+.pack:hover{background:#2a201a}
+.pack-icon{font-size:24px;margin-bottom:16px}
+.pack-nome{font-family:'Lora',serif;font-size:18px;font-weight:400;color:var(--offwhite);margin-bottom:8px}
+.pack-desc{font-size:10px;color:var(--cinza);line-height:1.75;margin-bottom:18px}
+.pi-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
+.pi-item{display:flex;align-items:flex-start;gap:7px;padding:4px 0;border-bottom:1px solid var(--linha)}
+.pi-item:last-child{border-bottom:none}
+.pi-d{width:3px;height:3px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.pi-t{font-size:9px;color:var(--areia-esc);line-height:1.55}
+.pack-inclui{margin-bottom:20px}
+.pp-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pp-item{background:var(--preto);padding:9px 11px}
+.pp-dia{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:3px}
+.pp-val{font-family:'Lora',serif;font-size:15px;color:var(--offwhite)}
+.pp-val.modelo{color:var(--areia-esc)}
+.pp-flag{font-family:'Poppins',sans-serif;font-size:7px;color:var(--cinza);display:block;margin-top:2px}
+.pack-preco{margin-bottom:18px}
+.pack-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  border:1px solid;padding:4px 12px;
+  font-size:7px;letter-spacing:2px;text-transform:uppercase;margin-top:12px;
+}
+.pack-why{font-size:9px;color:var(--cinza);line-height:1.65;margin-top:14px;padding-top:12px;border-top:1px solid var(--linha);font-style:italic}
+
+/* ENTRADA */
+.entrada-wrap{display:flex;flex-direction:column;gap:1px;background:var(--linha);margin-bottom:36px}
+.entrada-row{background:var(--carvao);display:grid;grid-template-columns:200px 1fr 1fr;gap:0}
+.er-c{padding:20px 22px;border-right:1px solid var(--linha);display:flex;flex-direction:column;justify-content:center}
+.er-c:last-child{border-right:none}
+.er-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:6px}
+.er-persona{font-family:'Lora',serif;font-size:14px;color:var(--offwhite);margin-bottom:3px}
+.er-role{font-size:9px;color:var(--cinza)}
+.er-entrada{font-size:11px;color:var(--offwhite);font-weight:500;margin-bottom:5px}
+.er-txt{font-size:9px;color:var(--cinza);line-height:1.65}
+.er-exp{font-size:9px;color:var(--areia-esc);line-height:1.65}
+
+/* SPACE */
+.space-hero{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linha);margin-bottom:36px}
+.sh-card{background:var(--carvao);padding:24px 20px;position:relative;overflow:hidden}
+.sh-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--tijolo)}
+.shc-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:10px}
+.shc-v{font-family:'Lora',serif;font-size:26px;color:var(--offwhite);line-height:1;margin-bottom:4px}
+.shc-s{font-size:9px;color:var(--cinza);line-height:1.5}
+
+.inclui-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);margin-bottom:36px}
+.inc-card{background:var(--carvao);padding:22px 20px}
+.inc-icon{font-size:20px;margin-bottom:12px}
+.inc-nome{font-family:'Lora',serif;font-size:13px;color:var(--offwhite);margin-bottom:6px}
+.inc-desc{font-size:9px;color:var(--cinza);line-height:1.65}
+
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin-bottom:36px}
+.tech-blk{background:var(--preto);padding:24px 26px}
+.tech-l{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--tijolo);margin-bottom:14px}
+.tech-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--linha)}
+.tech-item:last-child{border-bottom:none}
+.tech-d{width:4px;height:4px;border-radius:50%;background:var(--tijolo);flex-shrink:0;margin-top:5px}
+.tech-t{font-size:10px;color:var(--areia-esc);line-height:1.6}
+
+/* ADD-ONS */
+.addon-list{display:flex;flex-direction:column;gap:1px;background:var(--linha);margin-bottom:24px}
+.addon{background:var(--carvao)}
+.addon-h{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  gap:16px;padding:20px 24px;cursor:pointer;transition:background .2s;
+  border-left:3px solid transparent;
+}
+.addon-h:hover{background:#2a201a}
+.addon-h.open{border-left-color:var(--tijolo);background:var(--carvao2)}
+.ah-nome{font-family:'Lora',serif;font-size:14px;color:var(--offwhite)}
+.ah-sub{font-size:9px;color:var(--cinza);margin-top:2px}
+.ah-right{text-align:right;flex-shrink:0}
+.ah-preco{font-family:'Lora',serif;font-size:16px;color:var(--tijolo)}
+.ah-preco.modelo{color:var(--areia-esc)}
+.ah-flag{font-size:7px;color:var(--cinza);font-style:italic;margin-top:1px}
+.addon-body{display:none;padding:0 24px 22px;animation:fu .2s ease}
+.addon-body.open{display:block}
+.ab-desc{font-size:10px;color:var(--cinza);line-height:1.75;margin-bottom:12px}
+.ab-tip{font-size:9px;color:var(--areia-esc);font-style:italic;border-left:2px solid var(--tijolo);padding-left:10px;line-height:1.6}
+
+/* SHOW MODELS */
+.show-models{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin-bottom:36px}
+.sm-card{padding:28px 26px}
+.sm-card.a{background:var(--carvao)}
+.sm-card.b{background:var(--carvao2)}
+.sm-l{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--tijolo);margin-bottom:10px;opacity:.8}
+.sm-nome{font-family:'Lora',serif;font-size:17px;color:var(--offwhite);margin-bottom:14px}
+.sm-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--linha)}
+.sm-row:last-child{border-bottom:none}
+.sm-k{font-size:9px;color:var(--cinza)}
+.sm-v{font-size:10px;color:var(--areia-esc);font-weight:500;text-align:right}
+.sm-note{font-size:9px;color:var(--cinza);line-height:1.65;margin-top:14px;padding-top:12px;border-top:1px solid var(--linha);font-style:italic}
+
+/* JOURNEY */
+.fases-wrap{display:flex;flex-direction:column;gap:1px;background:var(--linha)}
+.fase-row{background:var(--carvao);display:grid;grid-template-columns:200px 1fr 1fr;gap:0}
+.fase-row.critica{background:linear-gradient(90deg,#2e1812,var(--carvao) 60%)}
+.fr-n{padding:24px;border-right:1px solid var(--linha);display:flex;flex-direction:column;justify-content:center}
+.fn-num{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--tijolo);opacity:.7;margin-bottom:5px}
+.fn-nome{font-family:'Lora',serif;font-size:14px;color:var(--offwhite)}
+.fn-critico{display:inline-block;font-size:7px;letter-spacing:2px;text-transform:uppercase;background:var(--tijolo);color:var(--offwhite);padding:2px 8px;margin-top:10px}
+.fr-o{padding:22px 24px;border-right:1px solid var(--linha)}
+.fr-c{padding:22px 24px}
+.fr-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
+.fr-t{font-size:10px;color:var(--areia-esc);line-height:1.75}
+.fr-nota{font-size:9px;color:var(--cinza);line-height:1.65;font-style:italic;margin-top:10px;padding-top:10px;border-top:1px solid var(--linha)}
+
+/* ALERT */
+.alerta{
+  background:var(--carvao2);border:1px solid var(--tijolo);
+  padding:18px 22px;margin-bottom:28px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.alert-icon{font-size:18px;flex-shrink:0}
+.alert-l{font-size:8px;letter-spacing:3px;color:var(--tijolo);text-transform:uppercase;margin-bottom:5px}
+.alert-t{font-family:'Lora',serif;font-size:12px;color:var(--areia-esc);line-height:1.7;font-style:italic}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--linha);border-radius:2px}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  header,main,.tabs{padding-left:24px;padding-right:24px}
+  .pack-grid.cols2,.show-models,.space-hero,.tech-grid,.inclui-grid{grid-template-columns:1fr}
+  .entrada-row,.fase-row{grid-template-columns:1fr}
+  .er-c,.fr-n,.fr-o{border-right:none;border-bottom:1px solid var(--linha)}
+  .pp-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="h-sub">Carro Chefe</div>
+    <div class="h-title">Arquitetura de Oferta</div>
+  </div>
+  <div class="h-right">
+    <div class="h-tag">Uso Interno · UP Agência</div>
+    <div class="h-tag">Estratégia · 2025</div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tb on"  onclick="goTab('pacotes',this)">Pacotes de Evento</button>
+  <button class="tb"     onclick="goTab('espaco',this)">O Espaço</button>
+  <button class="tb"     onclick="goTab('addons',this)">Personalizações</button>
+  <button class="tb"     onclick="goTab('experiencia',this)">Experiência de Contratação</button>
+</div>
+
+<main>
+  <div class="panel on" id="tab-pacotes"></div>
+  <div class="panel"    id="tab-espaco"></div>
+  <div class="panel"    id="tab-addons"></div>
+  <div class="panel"    id="tab-experiencia"></div>
+</main>
+
+<script>
+/* ── DATA ─────────────────────────────────────────────────────── */
+
+const PACOTES = [
+  { tier:1, icon:'🎂', nome:'Festa Privada', pc:'var(--an)',
+    persona:'A Anfitriã', tag:'Volume & Indicação',
+    desc:'Aniversários, bodas, batizados, formaturas e celebrações familiares. O maior volume de bookings do portfólio — e o principal motor de indicação orgânica da Zona Leste.',
+    inclui:[
+      'Espaço exclusivo — mínimo 4h de contrato',
+      'Serviço de bar (consumação ou open bar por pacote)',
+      'Estrutura de som: PA, microfone com e sem fio',
+      'Mesas e cadeiras para até 100 convidados',
+      'Camarotes disponíveis para grupos',
+      'Iluminação de ambiente inclusa',
+      '1h montagem + 1h desmontagem inclusas',
+      'Suporte on-site durante todo o evento',
+    ],
+    precos:[
+      {dia:'Seg – Qui',val:'R$ 10.000',modelo:false},
+      {dia:'Sexta-feira',val:'R$ 13.500',modelo:true},
+      {dia:'Sábado',val:'R$ 17.000',modelo:true},
+      {dia:'Domingo',val:'R$ 12.000',modelo:true},
+    ],
+    why:'A Anfitriã retorna e, mais importante, indica. Uma festa bem executada vale mais do que qualquer campanha paga — a rede familiar da Zona Leste se retroalimenta via WhatsApp e Instagram espontaneamente.'
+  },
+  { tier:1, icon:'🎵', nome:'Show & Noite Temática', pc:'var(--pr)',
+    persona:'O Produtor de Show', tag:'Visibilidade & Alcance',
+    desc:'Pagode, samba, forró, funk e noites temáticas com artistas locais e regionais. O Produtor traz o próprio público — que consome no bar, fotografa e expande o alcance orgânico do CF.',
+    inclui:[
+      'Palco + espaço exclusivo pelo período contratado',
+      'Estrutura de som completa: PA, monitor, DI, mesa digital',
+      'Bar operando durante todo o evento',
+      '1h de passagem de som inclusa no contrato',
+      'Suporte técnico on-site durante o evento',
+      'Área de camarotes disponível para o Produtor',
+    ],
+    precos:[
+      {dia:'Seg – Qui',val:'R$ 8.000',modelo:true},
+      {dia:'Sexta-feira',val:'R$ 11.000',modelo:true},
+      {dia:'Sábado',val:'R$ 14.000',modelo:true},
+      {dia:'Domingo',val:'R$ 10.000',modelo:true},
+    ],
+    why:'Cada show é uma campanha de marketing orgânica sem custo para o CF. O Produtor cobre a operação da noite — e o espaço ganha alcance real com um novo público a cada evento.'
+  },
+  { tier:2, icon:'💼', nome:'Confraternização Corporativa', pc:'var(--dc)',
+    persona:'O Decisor Corporativo', tag:'Ticket Alto & Recorrência',
+    desc:'Festas de fim de ano, day use e integrações de equipe para PMEs da Zona Leste. Ticket mais alto que festas privadas, decisão centralizada e recorrência anual garantida.',
+    inclui:[
+      'Espaço exclusivo — período diurno ou noturno, mín. 4h',
+      'Serviço de bar estruturado para o formato do evento',
+      'Suporte AV para apresentações se necessário',
+      'Mesas e cadeiras configuráveis para até 100 pessoas',
+      'Suporte on-site dedicado com briefing prévio',
+      'Coordenação de entrada (lista de convidados se necessário)',
+    ],
+    precos:[
+      {dia:'Seg – Qui',val:'R$ 10.000',modelo:false},
+      {dia:'Sexta-feira',val:'R$ 13.500',modelo:true},
+      {dia:'Sábado',val:'R$ 17.000',modelo:true},
+      {dia:'Domingo',val:'R$ 12.000',modelo:true},
+    ],
+    why:'O Decisor Corporativo não quer coordenar 3 fornecedores. Quer uma ligação, um orçamento e um endereço. O CF entrega os três — com a vantagem territorial de estar na Zona Leste.'
+  },
+  { tier:2, icon:'🎓', nome:'Formatura & Colação', pc:'var(--fm)',
+    persona:'Mix · Formandos & Famílias', tag:'Sazonalidade Previsível',
+    desc:'Festas de conclusão de cursos técnicos, graduações e pós. Sazonalidade previsível, público jovem e alta documentação em foto e vídeo — o que gera conteúdo orgânico extenso.',
+    inclui:[
+      'Espaço exclusivo para cerimônia + festa (transição de layout inclusa)',
+      'Serviço de bar para recepção e festa',
+      'Estrutura de som e microfone sem fio para discursos',
+      'Mesas e cadeiras para até 100 convidados',
+      'Área de coquetel/recepção configurada separadamente',
+      'Suporte on-site durante toda a programação',
+    ],
+    precos:[
+      {dia:'Seg – Qui',val:'R$ 10.000',modelo:false},
+      {dia:'Sexta-feira',val:'R$ 13.500',modelo:true},
+      {dia:'Sábado',val:'R$ 17.000',modelo:true},
+      {dia:'Domingo',val:'R$ 12.000',modelo:true},
+    ],
+    why:'Cada turma formada tem 30–60 alunos, cada um com uma rede de família e amigos que ainda não conhece o CF. Um evento bem executado vale meses de divulgação para um público novo.'
+  }
+];
+
+const ENTRADAS = [
+  { persona:'A Anfitriã', c:'var(--an)', role:'28–52 anos · Zona Leste',
+    entrada:'Festa Privada',
+    porque:'Quer resolver tudo num só lugar. Praticidade e confiança são o argumento decisivo — não o preço. Quando encontra um espaço confiável, retorna e indica toda a rede familiar.',
+    expansao:'Indica o CF para amigas → abre caminho para Produtor de Show → marido/parceiro pode ser o Decisor Corporativo da empresa deles'
+  },
+  { persona:'O Produtor de Show', c:'var(--pr)', role:'25–45 anos · Artista ou produtor musical',
+    entrada:'Show & Noite Temática',
+    porque:'Precisa de palco, estrutura e bar funcionando. O diferencial do CF é a infraestrutura completa sem precisar montar do zero. Quando o show vai bem, o Produtor volta com frequência.',
+    expansao:'Recorrência de shows → Noites temáticas regulares → Parceiro estratégico e âncora de conteúdo orgânico do espaço'
+  },
+  { persona:'O Decisor Corporativo', c:'var(--dc)', role:'30–55 anos · Sócio ou responsável por RH',
+    entrada:'Confraternização Corporativa',
+    porque:'Quer praticidade e proximidade geográfica. O CF é o espaço moderno mais próximo das PMEs da Zona Leste — sem os preços e o deslocamento do Tatuapé ou do Centro.',
+    expansao:'Recorrência anual → Indica para fornecedores e parceiros → Ticket cresce com add-ons como open bar premium e AV'
+  }
+];
+
+const INCLUI_PADRAO = [
+  {icon:'🏛',nome:'Espaço Exclusivo',desc:'Uso total do espaço pelo período contratado. Nenhum outro evento simultâneo — privacidade garantida.'},
+  {icon:'🎙',nome:'Estrutura de Som',desc:'PA, microfone (com e sem fio) e DI inclusos em todos os pacotes. Técnico disponível para configuração.'},
+  {icon:'🍸',nome:'Serviço de Bar',desc:'Bar operando durante todo o evento. Modelo de consumação ou open bar — definido na proposta de cada evento.'},
+  {icon:'🪑',nome:'Mobiliário Completo',desc:'Mesas e cadeiras para até 100 pessoas. Layout configurável por tipo de evento: banquete, cocktail ou show.'},
+  {icon:'🎪',nome:'Palco & Camarotes',desc:'Palco estruturado para shows e apresentações. Camarotes com visibilidade do palco disponíveis para grupos.'},
+  {icon:'💡',nome:'Iluminação de Ambiente',desc:'Iluminação básica inclusa em todos os pacotes. Upgrade para iluminação cênica disponível como add-on.'},
+  {icon:'🅿',nome:'Estacionamento',desc:'Acesso ao estacionamento do espaço para convidados durante o período do evento.'},
+  {icon:'🤝',nome:'Suporte On-site',desc:'Equipe Carro Chefe presente durante todo o evento. Coordenação, resolução de imprevistos e ponto de contato único.'},
+  {icon:'⏱',nome:'Tempo de Montagem',desc:'1 hora antes e 1 hora após o evento inclusas para setup de itens externos e desmontagem. Horas adicionais via add-on.'},
+];
+
+const TECH_SPECS = [
+  { cat:'Áudio & Palco', items:[
+    'PA principal com potência calibrada para 100 pessoas',
+    'Monitor de palco (retorno) incluso',
+    'Mesa de som digital',
+    'Microfone com fio + sem fio (headset/bastão)',
+    'Direct Input (DI) para instrumentos',
+    'Palco fixo estruturado',
+    'Subwoofer adicional — disponível como add-on',
+  ]},
+  { cat:'Espaço & Capacidade', items:[
+    'Capacidade total: 100 pessoas',
+    'Área interna coberta e climatizada',
+    'Bar integrado ao espaço principal',
+    'Camarotes com visão direta do palco',
+    'Banheiros masculino e feminino',
+    'Área de produção/backstage para shows',
+    'Estacionamento no próprio endereço',
+  ]}
+];
+
+const ADDONS = [
+  { nome:'Hora Extra', preco:'R$ 1.500', unit:'/hora', modelo:false,
+    sub:'Contratação durante o evento',
+    desc:'Cada hora adicional além do contrato base, comunicada com mínimo de 1h de antecedência durante o evento. Disponibilidade sujeita a agenda do dia.',
+    tip:'Para a Anfitriã: mencionar na proposta que festas costumam ultrapassar o horário. Já deixar a hora extra como opção no orçamento facilita o "sim" e evita surpresa no final da noite.'
+  },
+  { nome:'Iluminação Cênica', preco:'R$ 2.500', unit:'/evento', modelo:true,
+    sub:'PAR LEDs + moving heads + controlador',
+    desc:'Upgrade da iluminação de ambiente para iluminação técnica de show: PAR LEDs coloridos, moving heads e controlador DMX. Transforma a percepção do espaço para shows e noites temáticas.',
+    tip:'Essencial para shows — a iluminação cênica dobra a qualidade visual do conteúdo gerado pelo público. Cada foto tirada na noite vira marketing orgânico. Incluir como padrão nos pacotes de show.'
+  },
+  { nome:'Estrutura Sonora Ampliada', preco:'R$ 2.000', unit:'/evento', modelo:true,
+    sub:'Subwoofer adicional + potência extra',
+    desc:'Adição de subwoofer extra e potência adicional para eventos com mais de 80 pessoas ou shows com baixo acústico exigente (pagode, funk, sertanejo com banda completa).',
+    tip:'O Produtor de Show quase sempre precisa desse upgrade. Apresentar como parte do pacote de show — não como custo surpresa no dia.'
+  },
+  { nome:'Open Bar Premium', preco:'Sob consulta', unit:'', modelo:true,
+    sub:'Bebidas selecionadas por tempo determinado',
+    desc:'Pacote de bebidas por período fixo: água, refrigerante, cerveja artesanal, drinks autorais e destilados selecionados. Preço calculado por pessoa e por duração do evento.',
+    tip:'Para eventos corporativos, o open bar transforma a percepção da confraternização. O Decisor Corporativo prefere fechar isso no pacote — sem surpresa na conta final. Apresentar com opções de faixa de preço.'
+  },
+  { nome:'Decoração Temática', preco:'Via parceiro indicado', unit:'', modelo:true,
+    sub:'Execução por fornecedor parceiro do CF',
+    desc:'Decoração personalizada por tema via fornecedor parceiro apresentado pelo Carro Chefe. Orçamento e execução direto com o parceiro — o CF facilita a introdução e valida a qualidade.',
+    tip:'A indicação de um parceiro de confiança é parte da hospitalidade CF. A Anfitriã valoriza quando o espaço já tem alguém testado para indicar — uma decisão a menos para ela tomar.'
+  },
+  { nome:'Registro Profissional', preco:'Via parceiro indicado', unit:'', modelo:true,
+    sub:'Foto + vídeo por parceiro editorial',
+    desc:'Registro fotográfico e de vídeo por fotógrafo/videomaker parceiro do CF. Conteúdo com qualidade editorial — útil para o portfólio do espaço e para as redes do cliente.',
+    tip:'Solicitar permissão para usar o conteúdo nas redes do CF. Cada evento bem fotografado vira prova social permanente — e alimenta o calendário de conteúdo do Instagram sem custo de produção adicional.'
+  },
+  { nome:'Segurança Adicional', preco:'R$ 1.200', unit:'/evento', modelo:true,
+    sub:'Profissional para eventos com venda externa',
+    desc:'Profissional de segurança adicional para eventos acima de 70 pessoas ou shows com venda de ingresso ao público externo. Coordena acesso, lista e perímetro durante o evento.',
+    tip:'Recomendado para shows com artista regional ou noites temáticas abertas. O Produtor geralmente já prevê isso no orçamento dele — oferecer como facilidade na proposta do CF.'
+  },
+  { nome:'Transmissão Ao Vivo', preco:'R$ 1.800', unit:'/evento', modelo:true,
+    sub:'Setup de streaming para plataformas digitais',
+    desc:'Setup básico de live streaming: câmera dedicada, encoder e distribuição para YouTube Live ou Instagram Live. Ideal para shows com artistas que têm audiência digital ativa.',
+    tip:'Live do show no Instagram do Produtor apresenta o CF para a audiência dele — sem nenhum custo de mídia para o espaço. Marketing orgânico com custo de serviço.'
+  },
+];
+
+const SHOW_MODELS = [
+  { label:'Modelo A · Mais Comum', nome:'Locação Flat', tipo:'a',
+    rows:[
+      {k:'Locação base',v:'100% do valor contratado'},
+      {k:'Receita de bar',v:'100% para o Carro Chefe *'},
+      {k:'Bilheteria',v:'100% para o Produtor'},
+      {k:'Risco financeiro',v:'Produtor assume'},
+      {k:'Quando usar',v:'Produtores com histórico comprovado'},
+    ],
+    note:'* Em alguns casos, negociar split de bar (70/30 ou 60/40) como incentivo para o Produtor trazer público maior. Documentar sempre em contrato.'
+  },
+  { label:'Modelo B · Parceria', nome:'Split / Revenue Share', tipo:'b',
+    rows:[
+      {k:'Locação reduzida',v:'50–60% do valor flat'},
+      {k:'Receita de bar',v:'30–40% para o Carro Chefe'},
+      {k:'Bilheteria',v:'% negociada por evento'},
+      {k:'Risco financeiro',v:'Dividido entre CF e Produtor'},
+      {k:'Quando usar',v:'Artistas regionais com audiência estabelecida'},
+    ],
+    note:'Requer projeção prévia de público e mínimo de 2 referências de shows anteriores do Produtor. Formalizar split no contrato com projeção de cenários.'
+  }
+];
+
+const FASES = [
+  { num:'01', nome:'Primeiro Contato', critica:false,
+    oque:'Lead chega via WhatsApp, Instagram DM, Google ou indicação direta. A primeira resposta define se avança ou vai buscar outro espaço.',
+    como:'Resposta em até 2h em horário comercial. Abrir com pergunta consultiva: tipo de evento, data estimada e número de convidados. Nunca abrir com tabela de preços — isso é catálogo, não atendimento.',
+    nota:'A Anfitriã e o Decisor Corporativo avaliam o tom E a velocidade da resposta. Uma resposta lenta ou genérica encerra a conversa antes de começar.'
+  },
+  { num:'02', nome:'Visita ao Espaço', critica:true,
+    oque:'A Anfitriã e o Decisor Corporativo precisam ver o espaço antes de fechar. Este é o ponto de conversão mais crítico de toda a jornada do CF — e o mais subestimado.',
+    como:'Agendar a visita no mesmo dia do contato sempre que possível. Mostrar o espaço na configuração mais próxima do que o cliente quer. Ter um orçamento preliminar pronto para entregar durante a visita.',
+    nota:'O Produtor de Show dispensa a visita presencial com frequência — ele quer saber da estrutura técnica. Para ele: fotos do palco + especificações de áudio antes de qualquer reunião.'
+  },
+  { num:'03', nome:'Proposta & Negociação', critica:false,
+    oque:'Orçamento personalizado com itens discriminados: locação, modelo de bar, add-ons selecionados, prazo de validade e condições de pagamento.',
+    como:'Proposta enviada em até 24h após a visita. Formato visual e limpo — não bloco de texto em WhatsApp. Incluir sempre a hora extra como item opcional visível. Prazo de validade: 5 dias úteis.',
+    nota:'Nunca dar desconto na locação como resposta imediata a objeção de preço. Reposicionar o valor: infraestrutura completa, suporte on-site, praticidade de um único fornecedor.'
+  },
+  { num:'04', nome:'Contrato & Confirmação', critica:false,
+    oque:'Assinatura do contrato + entrada para confirmar a data na agenda. Sem entrada confirmada, a data permanece disponível para outros clientes.',
+    como:'Entrada de 50% no fechamento. Saldo 7 dias antes do evento. Contrato digital (WhatsApp + PDF assinado ou DocuSign). Confirmar a reserva por mensagem com a data e horário — a Anfitriã precisa sentir que a data é dela.',
+    nota:'Datas de fim de semana têm alta demanda. Deixar claro — sem pressão — que a confirmação só acontece com entrada. Clareza protege o negócio e o cliente.'
+  },
+  { num:'05', nome:'Dia do Evento', critica:false,
+    oque:'Execução impecável do briefing combinado. Espaço pronto 1h antes do início, equipe alinhada, bar abastecido, som testado.',
+    como:'Check-in com o cliente na chegada. Alguém do CF disponível e identificado durante todo o evento para demandas. Qualquer imprevisto resolvido internamente — o cliente não deve perceber problema.',
+    nota:'O evento bem executado gera a avaliação no Google, o post da Anfitriã e a indicação futura. É o único "anúncio" que nunca sai do ar — e que não custa verba de mídia.'
+  },
+  { num:'06', nome:'Pós-evento & Fidelização', critica:false,
+    oque:'Mensagem de agradecimento + pedido de avaliação no Google + abertura para o próximo evento. Simples, rápido e personalizado.',
+    como:'WhatsApp em até 48h após o evento: "Tudo certo com a festa? Ficamos felizes de ter recebido vocês." Seguir com link direto de avaliação Google. Para Anfitriã: perguntar sobre a próxima data já.',
+    nota:'A Anfitriã que indica 2 eventos em 12 meses vale mais do que qualquer campanha de tráfego pago. O pós-evento planta essa indicação — ou a desperdiça em silêncio.'
+  }
+];
+
+/* ── RENDER ────────────────────────────────────────────────────── */
+
+function packHTML(p){
+  return `
+    <div class="pack" style="--pc:${p.pc}">
+      <div class="pack-icon">${p.icon}</div>
+      <div class="pack-nome">${p.nome}</div>
+      <div class="pack-desc">${p.desc}</div>
+      <div class="pack-inclui">
+        <div class="pi-l">Incluso</div>
+        ${p.inclui.map(i=>`
+          <div class="pi-item">
+            <div class="pi-d" style="background:${p.pc}"></div>
+            <span class="pi-t">${i}</span>
+          </div>`).join('')}
+      </div>
+      <div class="pack-preco">
+        <div class="pp-l">Referência de Preço</div>
+        <div class="pp-grid">
+          ${p.precos.map(pr=>`
+            <div class="pp-item">
+              <div class="pp-dia">${pr.dia}</div>
+              <div class="pp-val ${pr.modelo?'modelo':''}">${pr.val}</div>
+              ${pr.modelo?'<div class="pp-flag">modelo *</div>':''}
+            </div>`).join('')}
+        </div>
+      </div>
+      <div class="pack-tag" style="color:${p.pc};border-color:${p.pc}">◈ ${p.persona} · ${p.tag}</div>
+      <div class="pack-why">${p.why}</div>
+    </div>`;
+}
+
+function renderPacotes(){
+  const t1 = PACOTES.filter(p=>p.tier===1);
+  const t2 = PACOTES.filter(p=>p.tier===2);
+  const entradas = ENTRADAS.map(e=>`
+    <div class="entrada-row">
+      <div class="er-c">
+        <div class="er-l">Persona</div>
+        <div class="er-persona" style="color:${e.c}">${e.persona}</div>
+        <div class="er-role">${e.role}</div>
+      </div>
+      <div class="er-c">
+        <div class="er-l">Ponto de entrada</div>
+        <div class="er-entrada">${e.entrada}</div>
+        <div class="er-txt">${e.porque}</div>
+      </div>
+      <div class="er-c">
+        <div class="er-l">Expansão natural</div>
+        <div class="er-exp">${e.expansao}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('tab-pacotes').innerHTML=`
+    <div class="insight">
+      <div class="ins-l">Arquitetura do portfólio</div>
+      <div class="ins-t">O Carro Chefe não vende locação — vende ocasião. A diferença está em como cada tipo de evento é apresentado, para quem e com qual argumento. Esta hierarquia foi definida por frequência, ticket, potencial de recorrência e fit com a infraestrutura atual do espaço.</div>
+    </div>
+
+    <div class="tier-row">
+      <div class="tier-badge" style="color:var(--tijolo);border-color:var(--tijolo)">Tier 1 · Prioridade Máxima</div>
+      <div class="tier-line"></div>
+    </div>
+    <div class="pack-grid cols2">${t1.map(packHTML).join('')}</div>
+
+    <div class="tier-row" style="margin-top:32px">
+      <div class="tier-badge" style="color:var(--cinza);border-color:var(--cinza)">Tier 2 · Alta Prioridade</div>
+      <div class="tier-line"></div>
+    </div>
+    <div class="pack-grid cols2">${t2.map(packHTML).join('')}</div>
+
+    <div style="font-size:9px;color:var(--cinza);font-style:italic;margin-bottom:40px;padding-left:4px">
+      * Valores marcados como "modelo" são referências de mercado sugeridas para espaços de evento em São Paulo/Zona Leste. Aguardando confirmação do Carro Chefe para inserir os valores reais na tabela oficial.
+    </div>
+
+    <div class="sec-hd">
+      <div class="sec-lb">Pontos de entrada por persona</div>
+      <div class="sec-ln"></div>
+    </div>
+    <div class="entrada-wrap">${entradas}</div>`;
+}
+
+function renderEspaco(){
+  const hero = [
+    {l:'Capacidade',v:'100',s:'pessoas — configuração padrão'},
+    {l:'Localização',v:'Cidade Líder',s:'Zona Leste · São Paulo'},
+    {l:'Espaço',v:'All-in-one',s:'som + palco + bar + camarote'},
+    {l:'Posição',v:'#1',s:'espaço de referência no bairro'},
+  ];
+
+  document.getElementById('tab-espaco').innerHTML=`
+    <div class="insight">
+      <div class="ins-l">O espaço como argumento</div>
+      <div class="ins-t">"Cidade Líder não tinha um espaço assim. Quem chega primeiro define o padrão. Quando o cliente compara o Carro Chefe com alternativas locais, a percepção de qualidade cria uma distância difícil de superar — sem necessidade de preço premium."</div>
+    </div>
+
+    <div class="sec-hd" style="margin-top:0">
+      <div class="sec-lb">Estrutura & posicionamento</div><div class="sec-ln"></div>
+    </div>
+    <div class="space-hero">
+      ${hero.map(h=>`
+        <div class="sh-card">
+          <div class="shc-l">${h.l}</div>
+          <div class="shc-v">${h.v}</div>
+          <div class="shc-s">${h.s}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="sec-hd">
+      <div class="sec-lb">O que está incluído em todos os pacotes</div><div class="sec-ln"></div>
+    </div>
+    <div class="inclui-grid">
+      ${INCLUI_PADRAO.map(i=>`
+        <div class="inc-card">
+          <div class="inc-icon">${i.icon}</div>
+          <div class="inc-nome">${i.nome}</div>
+          <div class="inc-desc">${i.desc}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="sec-hd">
+      <div class="sec-lb">Infraestrutura técnica</div><div class="sec-ln"></div>
+    </div>
+    <div class="tech-grid">
+      ${TECH_SPECS.map(t=>`
+        <div class="tech-blk">
+          <div class="tech-l">${t.cat}</div>
+          ${t.items.map(i=>`
+            <div class="tech-item">
+              <div class="tech-d"></div>
+              <span class="tech-t">${i}</span>
+            </div>`).join('')}
+        </div>`).join('')}
+    </div>`;
+}
+
+function renderAddons(){
+  const addHTML = ADDONS.map((a,i)=>`
+    <div class="addon">
+      <div class="addon-h" onclick="togAddon(${i})" id="adh-${i}">
+        <div>
+          <div class="ah-nome">${a.nome}</div>
+          <div class="ah-sub">${a.sub}</div>
+        </div>
+        <div class="ah-right">
+          <div class="ah-preco ${a.modelo?'modelo':''}">${a.preco}<span style="font-family:'Poppins',sans-serif;font-size:9px;color:var(--cinza)"> ${a.unit}</span></div>
+          ${a.modelo?'<div class="ah-flag">modelo *</div>':''}
+        </div>
+      </div>
+      <div class="addon-body" id="adb-${i}">
+        <div class="ab-desc">${a.desc}</div>
+        <div class="ab-tip">💡 ${a.tip}</div>
+      </div>
+    </div>`).join('');
+
+  const showHTML = SHOW_MODELS.map(sm=>`
+    <div class="sm-card ${sm.tipo}">
+      <div class="sm-l">${sm.label}</div>
+      <div class="sm-nome">${sm.nome}</div>
+      ${sm.rows.map(r=>`
+        <div class="sm-row">
+          <span class="sm-k">${r.k}</span>
+          <span class="sm-v">${r.v}</span>
+        </div>`).join('')}
+      <div class="sm-note">${sm.note}</div>
+    </div>`).join('');
+
+  document.getElementById('tab-addons').innerHTML=`
+    <div class="insight">
+      <div class="ins-l">Personalizar é estratégico</div>
+      <div class="ins-t">Add-ons bem posicionados aumentam o ticket sem alterar a estrutura de preço base. Para o cliente, é a percepção de que o Carro Chefe entrega exatamente o que ele precisa. Para o negócio, é margem adicional com custo operacional já amortizado.</div>
+    </div>
+
+    <div class="sec-hd" style="margin-top:0">
+      <div class="sec-lb">Clique para expandir cada add-on</div><div class="sec-ln"></div>
+    </div>
+    <div class="addon-list">${addHTML}</div>
+
+    <div style="font-size:9px;color:var(--cinza);font-style:italic;margin-bottom:40px;padding-left:4px">
+      * Valores modelo — referências de mercado para São Paulo. Confirmar com o CF antes de incluir na tabela oficial de preços.
+    </div>
+
+    <div class="sec-hd">
+      <div class="sec-lb">Modelos comerciais para shows</div><div class="sec-ln"></div>
+    </div>
+    <div class="show-models">${showHTML}</div>`;
+}
+
+function renderExperiencia(){
+  const fasesHTML = FASES.map(f=>`
+    <div class="fase-row ${f.critica?'critica':''}">
+      <div class="fr-n">
+        <div class="fn-num">${f.num}</div>
+        <div class="fn-nome">${f.nome}</div>
+        ${f.critica?'<div class="fn-critico">Momento Crítico</div>':''}
+      </div>
+      <div class="fr-o">
+        <div class="fr-l">O quê</div>
+        <div class="fr-t">${f.oque}</div>
+      </div>
+      <div class="fr-c">
+        <div class="fr-l">Como</div>
+        <div class="fr-t">${f.como}</div>
+        <div class="fr-nota">${f.nota}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('tab-experiencia').innerHTML=`
+    <div class="insight">
+      <div class="ins-l">A contratação como experiência</div>
+      <div class="ins-t">"O Carro Chefe não vende apenas um espaço — vende a confiança de que a festa vai acontecer do jeito certo. Cada etapa da contratação precisa confirmar essa promessa: da primeira resposta no WhatsApp até o pós-evento."</div>
+    </div>
+
+    <div class="alerta">
+      <div class="alert-icon">⚑</div>
+      <div>
+        <div class="alert-l">Ponto de atenção estratégico</div>
+        <div class="alert-t">A Fase 02 — Visita ao Espaço — é o ponto de conversão mais crítico de toda a jornada do CF. Um lead que visita o espaço tem taxa de conversão significativamente maior do que um que decide apenas por fotos e WhatsApp. Priorizar o agendamento de visitas como primeira ação após o contato inicial.</div>
+      </div>
+    </div>
+
+    <div class="sec-hd" style="margin-top:0">
+      <div class="sec-lb">As seis fases da contratação</div><div class="sec-ln"></div>
+    </div>
+    <div class="fases-wrap">${fasesHTML}</div>`;
+}
+
+/* ── INTERACTION ─────────────────────────────────────────────── */
+
+function togAddon(i){
+  document.getElementById('adb-'+i).classList.toggle('open');
+  document.getElementById('adh-'+i).classList.toggle('open');
+}
+
+function goTab(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:65,behavior:'smooth'});
+}
+
+/* ── INIT ──────────────────────────────────────────────────────── */
+renderPacotes();
+renderEspaco();
+renderAddons();
+renderExperiencia();
+</script>
+</body>
+</html>
