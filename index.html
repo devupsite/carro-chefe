@@ -3,717 +3,645 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Carro Chefe · Arquitetura de Oferta 2025</title>
+<title>Carro Chefe · Brand Book 2025</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --preto:#181310;--carvao:#28201A;--carvao2:#221A14;
-  --offwhite:#F5F0E8;--areia:#E0D5C5;--areia-esc:#C4B49A;
-  --tijolo:#C94B2C;--tijolo-d:rgba(201,75,44,.15);
-  --cinza:#9A8F85;--musgo:#4A6040;--linha:#3a2e22;
-  --an:#C94B2C;--pr:#4A6040;--dc:#9A8F85;--fm:#C4B49A;
+  --preto:#181310;--carvao:#28201A;--offwhite:#F5F0E8;
+  --areia:#E0D5C5;--areia-esc:#C4B49A;--areia-bg:#EDE8DF;
+  --tijolo:#C94B2C;--cinza:#9A8F85;--musgo:#4A6040;
+  --tijolo-alpha:rgba(201,75,44,0.15);
 }
-html,body{height:100%}
-body{font-family:'Poppins',sans-serif;background:var(--preto);color:var(--offwhite);overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{font-family:'Lora',Georgia,serif;background:var(--offwhite);color:var(--preto);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--carvao)}::-webkit-scrollbar-thumb{background:#4a3828;border-radius:2px}
 
-/* HEADER */
-header{
-  background:var(--preto);padding:24px 52px 20px;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  border-bottom:1px solid var(--tijolo);position:sticky;top:0;z-index:100;
-}
-.h-sub{font-size:8px;letter-spacing:4px;color:var(--tijolo);text-transform:uppercase;margin-bottom:5px}
-.h-title{font-family:'Lora',serif;font-size:20px;font-weight:400;color:var(--offwhite)}
-.h-right{text-align:right}
-.h-tag{font-size:8px;letter-spacing:3px;color:var(--cinza);text-transform:uppercase;line-height:1.8}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes revealLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.7}}
 
-/* TABS */
-.tabs{
-  display:flex;border-bottom:1px solid var(--linha);padding:0 52px;
-  background:var(--preto);overflow-x:auto;position:sticky;top:65px;z-index:99;scrollbar-width:none;
-}
-.tabs::-webkit-scrollbar{display:none}
-.tb{
-  background:none;border:none;border-bottom:2px solid transparent;
-  padding:17px 24px 15px;cursor:pointer;margin-bottom:-1px;
-  flex-shrink:0;transition:all .2s;font-family:'Poppins',sans-serif;
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);
-}
-.tb:hover{color:var(--areia-esc)}
-.tb.on{color:var(--tijolo);border-bottom-color:var(--tijolo)}
+/* ── COVER ── */
+.cover{min-height:100vh;background:var(--preto);display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:80px 40px}
+.cover-radial{position:absolute;width:600px;height:400px;background:radial-gradient(ellipse at 50% 70%,rgba(201,75,44,0.13) 0%,transparent 68%);bottom:10%;left:50%;transform:translateX(-50%);pointer-events:none}
+.cover-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(201,75,44,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,75,44,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.cover-line-h{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--tijolo) 50%,transparent 100%)}
+.cover-eyebrow{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:6px;color:var(--tijolo);text-transform:uppercase;margin-bottom:52px;animation:fadeUp .9s .1s ease both;position:relative;z-index:2}
+.logo-display{text-align:center;position:relative;z-index:2;animation:fadeUp .9s .3s ease both}
+.ld-carro{font-family:'Poppins',sans-serif;font-size:12px;font-weight:200;letter-spacing:10px;color:rgba(245,240,232,0.55);text-transform:uppercase;margin-bottom:4px}
+.ld-rule{height:1px;background:linear-gradient(90deg,transparent,var(--tijolo),transparent);transform-origin:center;animation:revealLine 1s .8s ease both}
+.ld-chefe{font-family:'Lora',serif;font-style:italic;font-size:80px;font-weight:500;color:var(--offwhite);line-height:1.05;letter-spacing:-2px}
+.cover-tagline{font-family:'Lora',serif;font-style:italic;font-size:15px;color:var(--cinza);margin-top:44px;animation:fadeUp .9s .6s ease both;position:relative;z-index:2}
+.cover-meta{position:absolute;bottom:0;left:0;right:0;padding:32px 64px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(201,75,44,0.12);animation:fadeUp .9s 1s ease both}
+.cov-m-item{font-family:'Poppins',sans-serif}
+.cov-m-label{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:#4a3828;margin-bottom:5px}
+.cov-m-val{font-size:9px;letter-spacing:2px;color:var(--cinza);text-transform:uppercase}
+.cover-num{position:absolute;right:64px;top:50%;transform:translateY(-50%);font-family:'Poppins',sans-serif;font-size:200px;font-weight:700;color:rgba(201,75,44,0.03);line-height:1;letter-spacing:-8px;pointer-events:none;user-select:none}
 
-/* MAIN */
-main{padding:52px 52px 100px;max-width:1120px}
-.panel{display:none;animation:fu .35s ease}
-.panel.on{display:block}
-@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* ── SECTIONS ── */
+.sec{padding:88px 80px;border-bottom:1px solid var(--areia);position:relative;overflow:hidden}
+.sec.dark{background:var(--carvao);border-bottom-color:#382a1e}
+.sec.deep{background:var(--preto);border-bottom-color:#382a1e}
+.sec.sand{background:var(--areia-bg)}
+.sec-bg-num{position:absolute;right:80px;top:88px;font-family:'Poppins',sans-serif;font-size:160px;font-weight:700;color:rgba(201,75,44,0.035);line-height:1;letter-spacing:-6px;pointer-events:none;user-select:none}
+.sec.dark .sec-bg-num,.sec.deep .sec-bg-num{color:rgba(201,75,44,0.055)}
+.label{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:5px;text-transform:uppercase;color:var(--cinza);margin-bottom:36px;display:flex;align-items:center;gap:14px}
+.label::after{content:'';height:1px;width:60px;background:var(--areia);flex-shrink:0}
+.label.fire{color:var(--tijolo)}
+.label.fire::after{background:rgba(201,75,44,0.3)}
+.label.dark-txt{color:#4a3828}
+.label.dark-txt::after{background:#382a1e}
 
-/* UTILS */
-.sec-hd{display:flex;align-items:center;gap:16px;margin-bottom:24px;margin-top:44px}
-.sec-hd:first-child{margin-top:0}
-.sec-lb{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza);white-space:nowrap}
-.sec-ln{flex:1;height:1px;background:var(--linha)}
+/* ── LOGO SYSTEM ── */
+.logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px}
+.logo-block{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 48px;min-height:250px;position:relative}
+.lb-a{background:var(--preto)}
+.lb-b{background:var(--offwhite)}
+.lb-c{background:var(--areia)}
+.lb-d{background:var(--tijolo)}
+.lb-tag{position:absolute;bottom:18px;left:22px;font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase}
+.lb-a .lb-tag,.lb-d .lb-tag{color:rgba(245,240,232,0.28)}
+.lb-b .lb-tag,.lb-c .lb-tag{color:rgba(24,19,16,0.22)}
+.lv-wrap{text-align:center}
+.lv-c{font-family:'Poppins',sans-serif;font-size:11px;font-weight:200;letter-spacing:8px;text-transform:uppercase;margin-bottom:3px}
+.lv-line{height:1px;margin:8px 0}
+.lv-ch{font-family:'Lora',serif;font-style:italic;font-size:54px;font-weight:500;line-height:1}
+.lb-a .lv-c{color:var(--areia-esc)}
+.lb-a .lv-line{background:linear-gradient(90deg,transparent,var(--tijolo),transparent)}
+.lb-a .lv-ch{color:var(--offwhite)}
+.lb-b .lv-c{color:var(--cinza)}
+.lb-b .lv-line{background:linear-gradient(90deg,transparent,var(--tijolo),transparent)}
+.lb-b .lv-ch{color:var(--preto)}
+.lb-c .lv-c{color:rgba(40,32,26,0.55)}
+.lb-c .lv-line{background:linear-gradient(90deg,transparent,rgba(40,32,26,0.35),transparent)}
+.lb-c .lv-ch{color:var(--preto)}
+.lb-d .lv-c{color:rgba(245,240,232,0.65)}
+.lb-d .lv-line{background:linear-gradient(90deg,transparent,rgba(245,240,232,0.5),transparent)}
+.lb-d .lv-ch{color:var(--offwhite)}
 
-.insight{background:var(--carvao);border-left:3px solid var(--tijolo);padding:18px 22px;margin-bottom:32px}
-.ins-l{font-size:7px;letter-spacing:3px;color:var(--tijolo);text-transform:uppercase;margin-bottom:6px}
-.ins-t{font-family:'Lora',serif;font-size:13px;color:var(--areia-esc);font-style:italic;line-height:1.7}
+.mono-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.mono-block{background:var(--preto);padding:40px;min-height:180px;display:flex;align-items:center;justify-content:center}
+.mono-ring{width:110px;height:110px;border-radius:50%;border:1px solid rgba(201,75,44,0.4);display:flex;align-items:center;justify-content:center;position:relative}
+.mono-ring::before{content:'';position:absolute;width:90px;height:90px;border-radius:50%;border:1px solid rgba(201,75,44,0.15)}
+.mono-text{font-family:'Lora',serif;font-style:italic;font-size:48px;font-weight:500;color:var(--offwhite);line-height:1}
+.rules-block{background:var(--preto);padding:36px 40px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.rule-item{font-family:'Poppins',sans-serif;font-size:10px;color:var(--cinza);line-height:1.8;padding-left:16px;border-left:2px solid rgba(201,75,44,0.3)}
+.rule-item strong{color:var(--areia-esc);font-weight:500}
 
-/* TIER */
-.tier-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.tier-badge{font-size:7px;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;border:1px solid}
-.tier-line{flex:1;height:1px;background:var(--linha)}
+/* ── COLORS ── */
+.color-hero-strip{background:var(--tijolo);padding:44px 56px;position:relative;overflow:hidden;margin-bottom:2px}
+.chr-ghost{position:absolute;right:40px;top:50%;transform:translateY(-50%);font-family:'Lora',serif;font-style:italic;font-size:160px;color:rgba(245,240,232,0.07);line-height:1;pointer-events:none;white-space:nowrap}
+.chr-label{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:5px;text-transform:uppercase;color:rgba(245,240,232,0.55);margin-bottom:10px}
+.chr-name{font-family:'Lora',serif;font-style:italic;font-size:40px;color:var(--offwhite);margin-bottom:18px;position:relative;z-index:1}
+.chr-codes{display:flex;gap:44px;flex-wrap:wrap;position:relative;z-index:1}
+.chr-code-item{font-family:'Poppins',sans-serif}
+.chr-code-key{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:5px}
+.chr-code-val{font-size:13px;color:var(--offwhite);font-weight:400;letter-spacing:1px}
+.color-swatch-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cs-item{}
+.cs-block{padding-bottom:75%}
+.cs-info{padding:12px 0 6px}
+.cs-name{font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;color:var(--preto);margin-bottom:3px}
+.cs-hex{font-family:'Poppins',sans-serif;font-size:8px;color:var(--cinza);letter-spacing:1px;margin-bottom:5px}
+.cs-role{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--tijolo)}
+.cs-role.neutral{color:var(--cinza)}
+.cs-role.green{color:var(--musgo)}
 
-/* PACK CARDS */
-.pack-grid{display:grid;gap:1px;background:var(--linha);margin-bottom:16px}
-.pack-grid.cols2{grid-template-columns:1fr 1fr}
-.pack{
-  background:var(--carvao);padding:30px 26px;
-  position:relative;overflow:hidden;border-top:3px solid var(--pc);
-  transition:background .2s;
-}
-.pack:hover{background:#2a201a}
-.pack-icon{font-size:24px;margin-bottom:16px}
-.pack-nome{font-family:'Lora',serif;font-size:18px;font-weight:400;color:var(--offwhite);margin-bottom:8px}
-.pack-desc{font-size:10px;color:var(--cinza);line-height:1.75;margin-bottom:18px}
-.pi-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
-.pi-item{display:flex;align-items:flex-start;gap:7px;padding:4px 0;border-bottom:1px solid var(--linha)}
-.pi-item:last-child{border-bottom:none}
-.pi-d{width:3px;height:3px;border-radius:50%;flex-shrink:0;margin-top:6px}
-.pi-t{font-size:9px;color:var(--areia-esc);line-height:1.55}
-.pack-inclui{margin-bottom:20px}
-.pp-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
-.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.pp-item{background:var(--preto);padding:9px 11px}
-.pp-dia{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:3px}
-.pp-val{font-family:'Lora',serif;font-size:15px;color:var(--offwhite)}
-.pp-val.modelo{color:var(--areia-esc)}
-.pp-flag{font-family:'Poppins',sans-serif;font-size:7px;color:var(--cinza);display:block;margin-top:2px}
-.pack-preco{margin-bottom:18px}
-.pack-tag{
-  display:inline-flex;align-items:center;gap:5px;
-  border:1px solid;padding:4px 12px;
-  font-size:7px;letter-spacing:2px;text-transform:uppercase;margin-top:12px;
-}
-.pack-why{font-size:9px;color:var(--cinza);line-height:1.65;margin-top:14px;padding-top:12px;border-top:1px solid var(--linha);font-style:italic}
+/* ── TYPOGRAPHY ── */
+.type-pair{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.type-col{border-top:1px solid var(--areia);padding-top:24px}
+.type-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--areia)}
+.type-family-name{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza)}
+.type-class{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--tijolo)}
+.type-big-serif{font-family:'Lora',serif;font-style:italic;font-size:62px;line-height:1;color:var(--preto);margin-bottom:20px}
+.type-big-sans{font-family:'Poppins',sans-serif;font-weight:200;font-size:62px;line-height:1;color:var(--preto);margin-bottom:20px;letter-spacing:-2px}
+.type-weights{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--areia)}
+.tw-row{display:flex;align-items:baseline;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--areia)}
+.tw-label{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);flex:0 0 72px}
+.tw-sample{font-size:17px;color:var(--preto);flex:1}
+.type-use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
+.tug-card{background:var(--areia-bg);padding:28px}
+.tug-label{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:18px}
+.tug-ex-1{font-family:'Lora',serif;font-style:italic;font-size:26px;color:var(--preto);line-height:1.15;margin-bottom:8px}
+.tug-ex-2{font-family:'Lora',serif;font-size:15px;color:var(--preto);line-height:1.6}
+.tug-ex-3{font-family:'Poppins',sans-serif;font-size:11px;color:var(--carvao);line-height:1.9}
+.tug-ex-4{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza)}
+.tug-note{font-family:'Poppins',sans-serif;font-size:8px;color:var(--areia-esc);margin-top:12px;border-top:1px solid var(--areia);padding-top:10px;line-height:1.7}
 
-/* ENTRADA */
-.entrada-wrap{display:flex;flex-direction:column;gap:1px;background:var(--linha);margin-bottom:36px}
-.entrada-row{background:var(--carvao);display:grid;grid-template-columns:200px 1fr 1fr;gap:0}
-.er-c{padding:20px 22px;border-right:1px solid var(--linha);display:flex;flex-direction:column;justify-content:center}
-.er-c:last-child{border-right:none}
-.er-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:6px}
-.er-persona{font-family:'Lora',serif;font-size:14px;color:var(--offwhite);margin-bottom:3px}
-.er-role{font-size:9px;color:var(--cinza)}
-.er-entrada{font-size:11px;color:var(--offwhite);font-weight:500;margin-bottom:5px}
-.er-txt{font-size:9px;color:var(--cinza);line-height:1.65}
-.er-exp{font-size:9px;color:var(--areia-esc);line-height:1.65}
+/* ── ELEMENTS ── */
+.elem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.elem-cell{background:var(--areia-bg);padding:36px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:160px}
+.elem-title{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);text-align:center}
+.orn-line-wrap{width:100%;display:flex;align-items:center;gap:8px}
+.orn-line{flex:1;height:1px;background:var(--tijolo)}
+.orn-dia{width:6px;height:6px;background:var(--tijolo);transform:rotate(45deg);flex-shrink:0}
+.orn-dia.sm{width:4px;height:4px;opacity:0.5}
+.frame-box{border:1px solid var(--tijolo);padding:16px 20px;position:relative;display:inline-block}
+.frame-box::before,.frame-box::after{content:'';position:absolute;width:8px;height:8px}
+.corner-tl{position:absolute;top:-2px;left:-2px;width:10px;height:10px;border-top:2px solid var(--tijolo);border-left:2px solid var(--tijolo)}
+.corner-tr{position:absolute;top:-2px;right:-2px;width:10px;height:10px;border-top:2px solid var(--tijolo);border-right:2px solid var(--tijolo)}
+.corner-bl{position:absolute;bottom:-2px;left:-2px;width:10px;height:10px;border-bottom:2px solid var(--tijolo);border-left:2px solid var(--tijolo)}
+.corner-br{position:absolute;bottom:-2px;right:-2px;width:10px;height:10px;border-bottom:2px solid var(--tijolo);border-right:2px solid var(--tijolo)}
+.frame-text{font-family:'Lora',serif;font-style:italic;font-size:13px;color:var(--preto)}
+.pattern-dia{width:70px;height:70px;background-image:repeating-linear-gradient(45deg,var(--tijolo) 0,var(--tijolo) 1px,transparent 1px,transparent 10px);opacity:0.35}
+.vertical-sep{width:1px;height:60px;background:linear-gradient(var(--tijolo),transparent)}
+.sep-dia-row{display:flex;align-items:center;gap:6px}
+.sep-d{width:6px;height:6px;background:var(--tijolo);transform:rotate(45deg)}
+.sep-d.tiny{width:3px;height:3px;opacity:0.4}
 
-/* SPACE */
-.space-hero{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linha);margin-bottom:36px}
-.sh-card{background:var(--carvao);padding:24px 20px;position:relative;overflow:hidden}
-.sh-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--tijolo)}
-.shc-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:10px}
-.shc-v{font-family:'Lora',serif;font-size:26px;color:var(--offwhite);line-height:1;margin-bottom:4px}
-.shc-s{font-size:9px;color:var(--cinza);line-height:1.5}
+/* ── PERSONALITY ── */
+.pers-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.pers-card{background:var(--areia-bg);padding:40px 20px;text-align:center;position:relative;overflow:hidden;cursor:default;transition:background .2s}
+.pers-card:hover{background:var(--areia)}
+.pers-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--tijolo);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.pers-card:hover::after{transform:scaleX(1)}
+.pc-num{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--tijolo);margin-bottom:14px}
+.pc-trait{font-family:'Lora',serif;font-style:italic;font-size:20px;color:var(--preto);margin-bottom:10px}
+.pc-not{font-family:'Poppins',sans-serif;font-size:9px;color:var(--areia-esc);text-decoration:line-through;font-style:italic}
 
-.inclui-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);margin-bottom:36px}
-.inc-card{background:var(--carvao);padding:22px 20px}
-.inc-icon{font-size:20px;margin-bottom:12px}
-.inc-nome{font-family:'Lora',serif;font-size:13px;color:var(--offwhite);margin-bottom:6px}
-.inc-desc{font-size:9px;color:var(--cinza);line-height:1.65}
+.archetype-section{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;padding-top:40px;border-top:1px solid var(--areia)}
+.arch-big{font-family:'Lora',serif;font-style:italic;font-size:36px;color:var(--preto);line-height:1.2;margin-bottom:16px}
+.arch-body{font-family:'Poppins',sans-serif;font-size:11px;color:var(--carvao);line-height:1.95}
+.tagline-feature{border-left:3px solid var(--tijolo);padding-left:28px}
+.tf-main{font-family:'Lora',serif;font-style:italic;font-size:44px;color:var(--preto);line-height:1.1;margin-bottom:14px}
+.tf-desc{font-family:'Poppins',sans-serif;font-size:11px;color:var(--cinza);line-height:1.9}
 
-.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin-bottom:36px}
-.tech-blk{background:var(--preto);padding:24px 26px}
-.tech-l{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--tijolo);margin-bottom:14px}
-.tech-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--linha)}
-.tech-item:last-child{border-bottom:none}
-.tech-d{width:4px;height:4px;border-radius:50%;background:var(--tijolo);flex-shrink:0;margin-top:5px}
-.tech-t{font-size:10px;color:var(--areia-esc);line-height:1.6}
+/* ── APPLICATIONS ── */
+.app-row{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px}
+.app-label{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:14px}
 
-/* ADD-ONS */
-.addon-list{display:flex;flex-direction:column;gap:1px;background:var(--linha);margin-bottom:24px}
-.addon{background:var(--carvao)}
-.addon-h{
-  display:grid;grid-template-columns:1fr auto;align-items:center;
-  gap:16px;padding:20px 24px;cursor:pointer;transition:background .2s;
-  border-left:3px solid transparent;
-}
-.addon-h:hover{background:#2a201a}
-.addon-h.open{border-left-color:var(--tijolo);background:var(--carvao2)}
-.ah-nome{font-family:'Lora',serif;font-size:14px;color:var(--offwhite)}
-.ah-sub{font-size:9px;color:var(--cinza);margin-top:2px}
-.ah-right{text-align:right;flex-shrink:0}
-.ah-preco{font-family:'Lora',serif;font-size:16px;color:var(--tijolo)}
-.ah-preco.modelo{color:var(--areia-esc)}
-.ah-flag{font-size:7px;color:var(--cinza);font-style:italic;margin-top:1px}
-.addon-body{display:none;padding:0 24px 22px;animation:fu .2s ease}
-.addon-body.open{display:block}
-.ab-desc{font-size:10px;color:var(--cinza);line-height:1.75;margin-bottom:12px}
-.ab-tip{font-size:9px;color:var(--areia-esc);font-style:italic;border-left:2px solid var(--tijolo);padding-left:10px;line-height:1.6}
+.ig-post{aspect-ratio:1/1;background:var(--preto);display:flex;flex-direction:column;justify-content:flex-end;padding:32px;position:relative;overflow:hidden}
+.igp-glow{position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 85%,rgba(201,75,44,0.22) 0%,transparent 70%);pointer-events:none}
+.igp-corner{position:absolute;top:24px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center}
+.igp-logo-sm{position:relative;z-index:2}
+.igp-l-c{font-family:'Poppins',sans-serif;font-size:7px;font-weight:200;letter-spacing:5px;color:rgba(245,240,232,0.5);text-transform:uppercase}
+.igp-l-r{width:100%;height:1px;background:linear-gradient(90deg,var(--tijolo),transparent);margin:5px 0}
+.igp-l-ch{font-family:'Lora',serif;font-style:italic;font-size:26px;color:var(--offwhite);line-height:1}
+.igp-loc{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:2px;color:rgba(245,240,232,0.3);text-transform:uppercase;position:relative;z-index:2}
+.igp-content{position:relative;z-index:2}
+.igp-tag{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--tijolo);margin-bottom:8px}
+.igp-title{font-family:'Lora',serif;font-style:italic;font-size:24px;color:var(--offwhite);line-height:1.2;margin-bottom:6px}
+.igp-sub{font-family:'Poppins',sans-serif;font-size:9px;color:var(--cinza);letter-spacing:1px}
 
-/* SHOW MODELS */
-.show-models{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);margin-bottom:36px}
-.sm-card{padding:28px 26px}
-.sm-card.a{background:var(--carvao)}
-.sm-card.b{background:var(--carvao2)}
-.sm-l{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--tijolo);margin-bottom:10px;opacity:.8}
-.sm-nome{font-family:'Lora',serif;font-size:17px;color:var(--offwhite);margin-bottom:14px}
-.sm-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--linha)}
-.sm-row:last-child{border-bottom:none}
-.sm-k{font-size:9px;color:var(--cinza)}
-.sm-v{font-size:10px;color:var(--areia-esc);font-weight:500;text-align:right}
-.sm-note{font-size:9px;color:var(--cinza);line-height:1.65;margin-top:14px;padding-top:12px;border-top:1px solid var(--linha);font-style:italic}
+.ig-story{aspect-ratio:9/16;max-height:440px;background:var(--tijolo);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:28px 24px}
+.igs-diag{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(245,240,232,0.045) 0,rgba(245,240,232,0.045) 1px,transparent 1px,transparent 20px);pointer-events:none}
+.igs-top,.igs-bottom{position:relative;z-index:2}
+.igs-eyebrow{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,232,0.6);margin-bottom:10px}
+.igs-headline{font-family:'Lora',serif;font-style:italic;font-size:40px;color:var(--offwhite);line-height:1.05}
+.igs-cta{font-family:'Poppins',sans-serif;font-size:10px;color:rgba(245,240,232,0.8);letter-spacing:.5px;margin-bottom:8px}
+.igs-logo{font-family:'Lora',serif;font-style:italic;font-size:18px;color:rgba(245,240,232,0.4)}
 
-/* JOURNEY */
-.fases-wrap{display:flex;flex-direction:column;gap:1px;background:var(--linha)}
-.fase-row{background:var(--carvao);display:grid;grid-template-columns:200px 1fr 1fr;gap:0}
-.fase-row.critica{background:linear-gradient(90deg,#2e1812,var(--carvao) 60%)}
-.fr-n{padding:24px;border-right:1px solid var(--linha);display:flex;flex-direction:column;justify-content:center}
-.fn-num{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--tijolo);opacity:.7;margin-bottom:5px}
-.fn-nome{font-family:'Lora',serif;font-size:14px;color:var(--offwhite)}
-.fn-critico{display:inline-block;font-size:7px;letter-spacing:2px;text-transform:uppercase;background:var(--tijolo);color:var(--offwhite);padding:2px 8px;margin-top:10px}
-.fr-o{padding:22px 24px;border-right:1px solid var(--linha)}
-.fr-c{padding:22px 24px}
-.fr-l{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
-.fr-t{font-size:10px;color:var(--areia-esc);line-height:1.75}
-.fr-nota{font-size:9px;color:var(--cinza);line-height:1.65;font-style:italic;margin-top:10px;padding-top:10px;border-top:1px solid var(--linha)}
+.bcard-row{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.bcard{aspect-ratio:1.75/1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:28px}
+.bcard.front{background:var(--preto)}
+.bcard.back{background:var(--areia-bg)}
+.bc-wrap{text-align:center}
+.bc-c{font-family:'Poppins',sans-serif;font-size:8px;font-weight:200;letter-spacing:7px;color:rgba(245,240,232,0.5);text-transform:uppercase}
+.bc-r{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--tijolo),transparent);margin:7px auto}
+.bc-ch{font-family:'Lora',serif;font-style:italic;font-size:34px;color:var(--offwhite);line-height:1}
+.bcb-wrap{width:100%}
+.bcb-name{font-family:'Lora',serif;font-size:17px;color:var(--preto);margin-bottom:4px}
+.bcb-title{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--tijolo);margin-bottom:14px}
+.bcb-info{font-family:'Poppins',sans-serif;font-size:9px;color:var(--cinza);line-height:1.9}
 
-/* ALERT */
-.alerta{
-  background:var(--carvao2);border:1px solid var(--tijolo);
-  padding:18px 22px;margin-bottom:28px;
-  display:flex;gap:14px;align-items:flex-start;
-}
-.alert-icon{font-size:18px;flex-shrink:0}
-.alert-l{font-size:8px;letter-spacing:3px;color:var(--tijolo);text-transform:uppercase;margin-bottom:5px}
-.alert-t{font-family:'Lora',serif;font-size:12px;color:var(--areia-esc);line-height:1.7;font-style:italic}
+/* ── POSITIONING ── */
+.pos-statement{font-family:'Lora',serif;font-style:italic;font-size:18px;color:var(--offwhite);line-height:1.9;border-left:3px solid var(--tijolo);padding-left:28px;max-width:780px}
+.pos-note{font-family:'Poppins',sans-serif;font-size:10px;color:var(--cinza);margin-top:28px;letter-spacing:.3px;font-style:italic}
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:3px;height:3px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--linha);border-radius:2px}
+/* ── DIFFERENTIALS ── */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.diff-card{border:1px solid var(--areia);padding:34px 26px;transition:border-color .25s}
+.diff-card:hover{border-color:rgba(201,75,44,0.5)}
+.diff-num{font-family:'Poppins',sans-serif;font-size:34px;font-weight:200;color:var(--tijolo);margin-bottom:18px;line-height:1}
+.diff-title{font-family:'Lora',serif;font-size:19px;color:var(--preto);margin-bottom:12px;font-weight:400}
+.diff-body{font-family:'Poppins',sans-serif;font-size:11px;color:var(--carvao);line-height:1.9}
+.diff-proof{font-family:'Poppins',sans-serif;font-size:10px;color:var(--tijolo);font-style:italic;margin-top:18px;padding-top:14px;border-top:1px solid var(--areia)}
 
-/* RESPONSIVE */
-@media(max-width:860px){
-  header,main,.tabs{padding-left:24px;padding-right:24px}
-  .pack-grid.cols2,.show-models,.space-hero,.tech-grid,.inclui-grid{grid-template-columns:1fr}
-  .entrada-row,.fase-row{grid-template-columns:1fr}
-  .er-c,.fr-n,.fr-o{border-right:none;border-bottom:1px solid var(--linha)}
-  .pp-grid{grid-template-columns:1fr 1fr}
+/* ── VOICE ── */
+.voice-box{background:var(--preto);border-left:3px solid var(--musgo);padding:28px 32px;max-width:660px;margin-bottom:32px}
+.voice-box p{font-family:'Poppins',sans-serif;font-size:12px;color:var(--areia-esc);line-height:2.0}
+.voice-examples{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ve-card{background:var(--areia-bg);padding:24px;border-top:2px solid var(--tijolo)}
+.ve-label{font-family:'Poppins',sans-serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--tijolo);margin-bottom:10px}
+.ve-text{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--preto);line-height:1.65}
+
+/* ── FOOTER ── */
+.doc-footer{background:var(--preto);padding:48px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,75,44,0.2)}
+.footer-logo .fl-c{font-family:'Poppins',sans-serif;font-size:8px;font-weight:200;letter-spacing:6px;color:rgba(245,240,232,0.4);text-transform:uppercase}
+.footer-logo .fl-r{height:1px;background:linear-gradient(90deg,var(--tijolo),transparent);margin:5px 0}
+.footer-logo .fl-ch{font-family:'Lora',serif;font-style:italic;font-size:22px;color:var(--offwhite);line-height:1}
+.footer-info{text-align:right;font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:2px;color:#4a3828;text-transform:uppercase;line-height:2.2}
+.footer-info span{display:block;color:var(--cinza)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .sec{padding:56px 24px}
+  .cover{padding:60px 24px}
+  .ld-chefe{font-size:52px}
+  .cover-meta{padding:24px;flex-wrap:wrap;gap:12px}
+  .logo-grid,.mono-grid,.type-pair,.archetype-section,.app-row,.bcard-row,.color-swatch-row,.diff-grid,.voice-examples{grid-template-columns:1fr}
+  .pers-strip{grid-template-columns:1fr 1fr}
+  .elem-grid{grid-template-columns:1fr 1fr}
+  .type-use-grid{grid-template-columns:1fr}
+  .cover-num{font-size:120px;right:24px}
+  .doc-footer{flex-direction:column;gap:24px;text-align:center}
+  .footer-info{text-align:center}
 }
 </style>
 </head>
 <body>
 
-<header>
-  <div>
-    <div class="h-sub">Carro Chefe</div>
-    <div class="h-title">Arquitetura de Oferta</div>
+<!-- ════════════════ COVER ════════════════ -->
+<div class="cover">
+  <div class="cover-radial"></div>
+  <div class="cover-grid-bg"></div>
+  <div class="cover-line-h"></div>
+  <div class="cover-num">CC</div>
+  <div class="cover-eyebrow">Sistema de Identidade Visual · Brand Book</div>
+  <div class="logo-display">
+    <div class="ld-carro">Carro</div>
+    <div class="ld-rule"></div>
+    <div class="ld-chefe">Chefe</div>
   </div>
-  <div class="h-right">
-    <div class="h-tag">Uso Interno · UP Agência</div>
-    <div class="h-tag">Estratégia · 2025</div>
+  <div class="cover-tagline">"Aqui é o lugar."</div>
+  <div class="cover-meta">
+    <div class="cov-m-item"><div class="cov-m-label">Documento</div><div class="cov-m-val">Brand Book · v1.0</div></div>
+    <div class="cov-m-item"><div class="cov-m-label">Produzido por</div><div class="cov-m-val">UP Agência</div></div>
+    <div class="cov-m-item"><div class="cov-m-label">Aplicação</div><div class="cov-m-val">Uso Interno</div></div>
+    <div class="cov-m-item"><div class="cov-m-label">Ano</div><div class="cov-m-val">2025</div></div>
   </div>
-</header>
-
-<div class="tabs">
-  <button class="tb on"  onclick="goTab('pacotes',this)">Pacotes de Evento</button>
-  <button class="tb"     onclick="goTab('espaco',this)">O Espaço</button>
-  <button class="tb"     onclick="goTab('addons',this)">Personalizações</button>
-  <button class="tb"     onclick="goTab('experiencia',this)">Experiência de Contratação</button>
 </div>
 
-<main>
-  <div class="panel on" id="tab-pacotes"></div>
-  <div class="panel"    id="tab-espaco"></div>
-  <div class="panel"    id="tab-addons"></div>
-  <div class="panel"    id="tab-experiencia"></div>
-</main>
-
-<script>
-/* ── DATA ─────────────────────────────────────────────────────── */
-
-const PACOTES = [
-  { tier:1, icon:'🎂', nome:'Festa Privada', pc:'var(--an)',
-    persona:'A Anfitriã', tag:'Volume & Indicação',
-    desc:'Aniversários, bodas, batizados, formaturas e celebrações familiares. O maior volume de bookings do portfólio — e o principal motor de indicação orgânica da Zona Leste.',
-    inclui:[
-      'Espaço exclusivo — mínimo 4h de contrato',
-      'Serviço de bar (consumação ou open bar por pacote)',
-      'Estrutura de som: PA, microfone com e sem fio',
-      'Mesas e cadeiras para até 100 convidados',
-      'Camarotes disponíveis para grupos',
-      'Iluminação de ambiente inclusa',
-      '1h montagem + 1h desmontagem inclusas',
-      'Suporte on-site durante todo o evento',
-    ],
-    precos:[
-      {dia:'Seg – Qui',val:'R$ 10.000',modelo:false},
-      {dia:'Sexta-feira',val:'R$ 13.500',modelo:true},
-      {dia:'Sábado',val:'R$ 17.000',modelo:true},
-      {dia:'Domingo',val:'R$ 12.000',modelo:true},
-    ],
-    why:'A Anfitriã retorna e, mais importante, indica. Uma festa bem executada vale mais do que qualquer campanha paga — a rede familiar da Zona Leste se retroalimenta via WhatsApp e Instagram espontaneamente.'
-  },
-  { tier:1, icon:'🎵', nome:'Show & Noite Temática', pc:'var(--pr)',
-    persona:'O Produtor de Show', tag:'Visibilidade & Alcance',
-    desc:'Pagode, samba, forró, funk e noites temáticas com artistas locais e regionais. O Produtor traz o próprio público — que consome no bar, fotografa e expande o alcance orgânico do CF.',
-    inclui:[
-      'Palco + espaço exclusivo pelo período contratado',
-      'Estrutura de som completa: PA, monitor, DI, mesa digital',
-      'Bar operando durante todo o evento',
-      '1h de passagem de som inclusa no contrato',
-      'Suporte técnico on-site durante o evento',
-      'Área de camarotes disponível para o Produtor',
-    ],
-    precos:[
-      {dia:'Seg – Qui',val:'R$ 8.000',modelo:true},
-      {dia:'Sexta-feira',val:'R$ 11.000',modelo:true},
-      {dia:'Sábado',val:'R$ 14.000',modelo:true},
-      {dia:'Domingo',val:'R$ 10.000',modelo:true},
-    ],
-    why:'Cada show é uma campanha de marketing orgânica sem custo para o CF. O Produtor cobre a operação da noite — e o espaço ganha alcance real com um novo público a cada evento.'
-  },
-  { tier:2, icon:'💼', nome:'Confraternização Corporativa', pc:'var(--dc)',
-    persona:'O Decisor Corporativo', tag:'Ticket Alto & Recorrência',
-    desc:'Festas de fim de ano, day use e integrações de equipe para PMEs da Zona Leste. Ticket mais alto que festas privadas, decisão centralizada e recorrência anual garantida.',
-    inclui:[
-      'Espaço exclusivo — período diurno ou noturno, mín. 4h',
-      'Serviço de bar estruturado para o formato do evento',
-      'Suporte AV para apresentações se necessário',
-      'Mesas e cadeiras configuráveis para até 100 pessoas',
-      'Suporte on-site dedicado com briefing prévio',
-      'Coordenação de entrada (lista de convidados se necessário)',
-    ],
-    precos:[
-      {dia:'Seg – Qui',val:'R$ 10.000',modelo:false},
-      {dia:'Sexta-feira',val:'R$ 13.500',modelo:true},
-      {dia:'Sábado',val:'R$ 17.000',modelo:true},
-      {dia:'Domingo',val:'R$ 12.000',modelo:true},
-    ],
-    why:'O Decisor Corporativo não quer coordenar 3 fornecedores. Quer uma ligação, um orçamento e um endereço. O CF entrega os três — com a vantagem territorial de estar na Zona Leste.'
-  },
-  { tier:2, icon:'🎓', nome:'Formatura & Colação', pc:'var(--fm)',
-    persona:'Mix · Formandos & Famílias', tag:'Sazonalidade Previsível',
-    desc:'Festas de conclusão de cursos técnicos, graduações e pós. Sazonalidade previsível, público jovem e alta documentação em foto e vídeo — o que gera conteúdo orgânico extenso.',
-    inclui:[
-      'Espaço exclusivo para cerimônia + festa (transição de layout inclusa)',
-      'Serviço de bar para recepção e festa',
-      'Estrutura de som e microfone sem fio para discursos',
-      'Mesas e cadeiras para até 100 convidados',
-      'Área de coquetel/recepção configurada separadamente',
-      'Suporte on-site durante toda a programação',
-    ],
-    precos:[
-      {dia:'Seg – Qui',val:'R$ 10.000',modelo:false},
-      {dia:'Sexta-feira',val:'R$ 13.500',modelo:true},
-      {dia:'Sábado',val:'R$ 17.000',modelo:true},
-      {dia:'Domingo',val:'R$ 12.000',modelo:true},
-    ],
-    why:'Cada turma formada tem 30–60 alunos, cada um com uma rede de família e amigos que ainda não conhece o CF. Um evento bem executado vale meses de divulgação para um público novo.'
-  }
-];
-
-const ENTRADAS = [
-  { persona:'A Anfitriã', c:'var(--an)', role:'28–52 anos · Zona Leste',
-    entrada:'Festa Privada',
-    porque:'Quer resolver tudo num só lugar. Praticidade e confiança são o argumento decisivo — não o preço. Quando encontra um espaço confiável, retorna e indica toda a rede familiar.',
-    expansao:'Indica o CF para amigas → abre caminho para Produtor de Show → marido/parceiro pode ser o Decisor Corporativo da empresa deles'
-  },
-  { persona:'O Produtor de Show', c:'var(--pr)', role:'25–45 anos · Artista ou produtor musical',
-    entrada:'Show & Noite Temática',
-    porque:'Precisa de palco, estrutura e bar funcionando. O diferencial do CF é a infraestrutura completa sem precisar montar do zero. Quando o show vai bem, o Produtor volta com frequência.',
-    expansao:'Recorrência de shows → Noites temáticas regulares → Parceiro estratégico e âncora de conteúdo orgânico do espaço'
-  },
-  { persona:'O Decisor Corporativo', c:'var(--dc)', role:'30–55 anos · Sócio ou responsável por RH',
-    entrada:'Confraternização Corporativa',
-    porque:'Quer praticidade e proximidade geográfica. O CF é o espaço moderno mais próximo das PMEs da Zona Leste — sem os preços e o deslocamento do Tatuapé ou do Centro.',
-    expansao:'Recorrência anual → Indica para fornecedores e parceiros → Ticket cresce com add-ons como open bar premium e AV'
-  }
-];
-
-const INCLUI_PADRAO = [
-  {icon:'🏛',nome:'Espaço Exclusivo',desc:'Uso total do espaço pelo período contratado. Nenhum outro evento simultâneo — privacidade garantida.'},
-  {icon:'🎙',nome:'Estrutura de Som',desc:'PA, microfone (com e sem fio) e DI inclusos em todos os pacotes. Técnico disponível para configuração.'},
-  {icon:'🍸',nome:'Serviço de Bar',desc:'Bar operando durante todo o evento. Modelo de consumação ou open bar — definido na proposta de cada evento.'},
-  {icon:'🪑',nome:'Mobiliário Completo',desc:'Mesas e cadeiras para até 100 pessoas. Layout configurável por tipo de evento: banquete, cocktail ou show.'},
-  {icon:'🎪',nome:'Palco & Camarotes',desc:'Palco estruturado para shows e apresentações. Camarotes com visibilidade do palco disponíveis para grupos.'},
-  {icon:'💡',nome:'Iluminação de Ambiente',desc:'Iluminação básica inclusa em todos os pacotes. Upgrade para iluminação cênica disponível como add-on.'},
-  {icon:'🅿',nome:'Estacionamento',desc:'Acesso ao estacionamento do espaço para convidados durante o período do evento.'},
-  {icon:'🤝',nome:'Suporte On-site',desc:'Equipe Carro Chefe presente durante todo o evento. Coordenação, resolução de imprevistos e ponto de contato único.'},
-  {icon:'⏱',nome:'Tempo de Montagem',desc:'1 hora antes e 1 hora após o evento inclusas para setup de itens externos e desmontagem. Horas adicionais via add-on.'},
-];
-
-const TECH_SPECS = [
-  { cat:'Áudio & Palco', items:[
-    'PA principal com potência calibrada para 100 pessoas',
-    'Monitor de palco (retorno) incluso',
-    'Mesa de som digital',
-    'Microfone com fio + sem fio (headset/bastão)',
-    'Direct Input (DI) para instrumentos',
-    'Palco fixo estruturado',
-    'Subwoofer adicional — disponível como add-on',
-  ]},
-  { cat:'Espaço & Capacidade', items:[
-    'Capacidade total: 100 pessoas',
-    'Área interna coberta e climatizada',
-    'Bar integrado ao espaço principal',
-    'Camarotes com visão direta do palco',
-    'Banheiros masculino e feminino',
-    'Área de produção/backstage para shows',
-    'Estacionamento no próprio endereço',
-  ]}
-];
-
-const ADDONS = [
-  { nome:'Hora Extra', preco:'R$ 1.500', unit:'/hora', modelo:false,
-    sub:'Contratação durante o evento',
-    desc:'Cada hora adicional além do contrato base, comunicada com mínimo de 1h de antecedência durante o evento. Disponibilidade sujeita a agenda do dia.',
-    tip:'Para a Anfitriã: mencionar na proposta que festas costumam ultrapassar o horário. Já deixar a hora extra como opção no orçamento facilita o "sim" e evita surpresa no final da noite.'
-  },
-  { nome:'Iluminação Cênica', preco:'R$ 2.500', unit:'/evento', modelo:true,
-    sub:'PAR LEDs + moving heads + controlador',
-    desc:'Upgrade da iluminação de ambiente para iluminação técnica de show: PAR LEDs coloridos, moving heads e controlador DMX. Transforma a percepção do espaço para shows e noites temáticas.',
-    tip:'Essencial para shows — a iluminação cênica dobra a qualidade visual do conteúdo gerado pelo público. Cada foto tirada na noite vira marketing orgânico. Incluir como padrão nos pacotes de show.'
-  },
-  { nome:'Estrutura Sonora Ampliada', preco:'R$ 2.000', unit:'/evento', modelo:true,
-    sub:'Subwoofer adicional + potência extra',
-    desc:'Adição de subwoofer extra e potência adicional para eventos com mais de 80 pessoas ou shows com baixo acústico exigente (pagode, funk, sertanejo com banda completa).',
-    tip:'O Produtor de Show quase sempre precisa desse upgrade. Apresentar como parte do pacote de show — não como custo surpresa no dia.'
-  },
-  { nome:'Open Bar Premium', preco:'Sob consulta', unit:'', modelo:true,
-    sub:'Bebidas selecionadas por tempo determinado',
-    desc:'Pacote de bebidas por período fixo: água, refrigerante, cerveja artesanal, drinks autorais e destilados selecionados. Preço calculado por pessoa e por duração do evento.',
-    tip:'Para eventos corporativos, o open bar transforma a percepção da confraternização. O Decisor Corporativo prefere fechar isso no pacote — sem surpresa na conta final. Apresentar com opções de faixa de preço.'
-  },
-  { nome:'Decoração Temática', preco:'Via parceiro indicado', unit:'', modelo:true,
-    sub:'Execução por fornecedor parceiro do CF',
-    desc:'Decoração personalizada por tema via fornecedor parceiro apresentado pelo Carro Chefe. Orçamento e execução direto com o parceiro — o CF facilita a introdução e valida a qualidade.',
-    tip:'A indicação de um parceiro de confiança é parte da hospitalidade CF. A Anfitriã valoriza quando o espaço já tem alguém testado para indicar — uma decisão a menos para ela tomar.'
-  },
-  { nome:'Registro Profissional', preco:'Via parceiro indicado', unit:'', modelo:true,
-    sub:'Foto + vídeo por parceiro editorial',
-    desc:'Registro fotográfico e de vídeo por fotógrafo/videomaker parceiro do CF. Conteúdo com qualidade editorial — útil para o portfólio do espaço e para as redes do cliente.',
-    tip:'Solicitar permissão para usar o conteúdo nas redes do CF. Cada evento bem fotografado vira prova social permanente — e alimenta o calendário de conteúdo do Instagram sem custo de produção adicional.'
-  },
-  { nome:'Segurança Adicional', preco:'R$ 1.200', unit:'/evento', modelo:true,
-    sub:'Profissional para eventos com venda externa',
-    desc:'Profissional de segurança adicional para eventos acima de 70 pessoas ou shows com venda de ingresso ao público externo. Coordena acesso, lista e perímetro durante o evento.',
-    tip:'Recomendado para shows com artista regional ou noites temáticas abertas. O Produtor geralmente já prevê isso no orçamento dele — oferecer como facilidade na proposta do CF.'
-  },
-  { nome:'Transmissão Ao Vivo', preco:'R$ 1.800', unit:'/evento', modelo:true,
-    sub:'Setup de streaming para plataformas digitais',
-    desc:'Setup básico de live streaming: câmera dedicada, encoder e distribuição para YouTube Live ou Instagram Live. Ideal para shows com artistas que têm audiência digital ativa.',
-    tip:'Live do show no Instagram do Produtor apresenta o CF para a audiência dele — sem nenhum custo de mídia para o espaço. Marketing orgânico com custo de serviço.'
-  },
-];
-
-const SHOW_MODELS = [
-  { label:'Modelo A · Mais Comum', nome:'Locação Flat', tipo:'a',
-    rows:[
-      {k:'Locação base',v:'100% do valor contratado'},
-      {k:'Receita de bar',v:'100% para o Carro Chefe *'},
-      {k:'Bilheteria',v:'100% para o Produtor'},
-      {k:'Risco financeiro',v:'Produtor assume'},
-      {k:'Quando usar',v:'Produtores com histórico comprovado'},
-    ],
-    note:'* Em alguns casos, negociar split de bar (70/30 ou 60/40) como incentivo para o Produtor trazer público maior. Documentar sempre em contrato.'
-  },
-  { label:'Modelo B · Parceria', nome:'Split / Revenue Share', tipo:'b',
-    rows:[
-      {k:'Locação reduzida',v:'50–60% do valor flat'},
-      {k:'Receita de bar',v:'30–40% para o Carro Chefe'},
-      {k:'Bilheteria',v:'% negociada por evento'},
-      {k:'Risco financeiro',v:'Dividido entre CF e Produtor'},
-      {k:'Quando usar',v:'Artistas regionais com audiência estabelecida'},
-    ],
-    note:'Requer projeção prévia de público e mínimo de 2 referências de shows anteriores do Produtor. Formalizar split no contrato com projeção de cenários.'
-  }
-];
-
-const FASES = [
-  { num:'01', nome:'Primeiro Contato', critica:false,
-    oque:'Lead chega via WhatsApp, Instagram DM, Google ou indicação direta. A primeira resposta define se avança ou vai buscar outro espaço.',
-    como:'Resposta em até 2h em horário comercial. Abrir com pergunta consultiva: tipo de evento, data estimada e número de convidados. Nunca abrir com tabela de preços — isso é catálogo, não atendimento.',
-    nota:'A Anfitriã e o Decisor Corporativo avaliam o tom E a velocidade da resposta. Uma resposta lenta ou genérica encerra a conversa antes de começar.'
-  },
-  { num:'02', nome:'Visita ao Espaço', critica:true,
-    oque:'A Anfitriã e o Decisor Corporativo precisam ver o espaço antes de fechar. Este é o ponto de conversão mais crítico de toda a jornada do CF — e o mais subestimado.',
-    como:'Agendar a visita no mesmo dia do contato sempre que possível. Mostrar o espaço na configuração mais próxima do que o cliente quer. Ter um orçamento preliminar pronto para entregar durante a visita.',
-    nota:'O Produtor de Show dispensa a visita presencial com frequência — ele quer saber da estrutura técnica. Para ele: fotos do palco + especificações de áudio antes de qualquer reunião.'
-  },
-  { num:'03', nome:'Proposta & Negociação', critica:false,
-    oque:'Orçamento personalizado com itens discriminados: locação, modelo de bar, add-ons selecionados, prazo de validade e condições de pagamento.',
-    como:'Proposta enviada em até 24h após a visita. Formato visual e limpo — não bloco de texto em WhatsApp. Incluir sempre a hora extra como item opcional visível. Prazo de validade: 5 dias úteis.',
-    nota:'Nunca dar desconto na locação como resposta imediata a objeção de preço. Reposicionar o valor: infraestrutura completa, suporte on-site, praticidade de um único fornecedor.'
-  },
-  { num:'04', nome:'Contrato & Confirmação', critica:false,
-    oque:'Assinatura do contrato + entrada para confirmar a data na agenda. Sem entrada confirmada, a data permanece disponível para outros clientes.',
-    como:'Entrada de 50% no fechamento. Saldo 7 dias antes do evento. Contrato digital (WhatsApp + PDF assinado ou DocuSign). Confirmar a reserva por mensagem com a data e horário — a Anfitriã precisa sentir que a data é dela.',
-    nota:'Datas de fim de semana têm alta demanda. Deixar claro — sem pressão — que a confirmação só acontece com entrada. Clareza protege o negócio e o cliente.'
-  },
-  { num:'05', nome:'Dia do Evento', critica:false,
-    oque:'Execução impecável do briefing combinado. Espaço pronto 1h antes do início, equipe alinhada, bar abastecido, som testado.',
-    como:'Check-in com o cliente na chegada. Alguém do CF disponível e identificado durante todo o evento para demandas. Qualquer imprevisto resolvido internamente — o cliente não deve perceber problema.',
-    nota:'O evento bem executado gera a avaliação no Google, o post da Anfitriã e a indicação futura. É o único "anúncio" que nunca sai do ar — e que não custa verba de mídia.'
-  },
-  { num:'06', nome:'Pós-evento & Fidelização', critica:false,
-    oque:'Mensagem de agradecimento + pedido de avaliação no Google + abertura para o próximo evento. Simples, rápido e personalizado.',
-    como:'WhatsApp em até 48h após o evento: "Tudo certo com a festa? Ficamos felizes de ter recebido vocês." Seguir com link direto de avaliação Google. Para Anfitriã: perguntar sobre a próxima data já.',
-    nota:'A Anfitriã que indica 2 eventos em 12 meses vale mais do que qualquer campanha de tráfego pago. O pós-evento planta essa indicação — ou a desperdiça em silêncio.'
-  }
-];
-
-/* ── RENDER ────────────────────────────────────────────────────── */
-
-function packHTML(p){
-  return `
-    <div class="pack" style="--pc:${p.pc}">
-      <div class="pack-icon">${p.icon}</div>
-      <div class="pack-nome">${p.nome}</div>
-      <div class="pack-desc">${p.desc}</div>
-      <div class="pack-inclui">
-        <div class="pi-l">Incluso</div>
-        ${p.inclui.map(i=>`
-          <div class="pi-item">
-            <div class="pi-d" style="background:${p.pc}"></div>
-            <span class="pi-t">${i}</span>
-          </div>`).join('')}
+<!-- ════════════════ 01 · LOGO SYSTEM ════════════════ -->
+<div class="sec dark">
+  <div class="sec-bg-num">01</div>
+  <div class="label fire">Sistema de Logo</div>
+  <div class="logo-grid">
+    <div class="logo-block lb-a">
+      <div class="lb-tag">Versão Principal · Fundo Escuro</div>
+      <div class="lv-wrap">
+        <div class="lv-c">Carro</div>
+        <div class="lv-line"></div>
+        <div class="lv-ch">Chefe</div>
       </div>
-      <div class="pack-preco">
-        <div class="pp-l">Referência de Preço</div>
-        <div class="pp-grid">
-          ${p.precos.map(pr=>`
-            <div class="pp-item">
-              <div class="pp-dia">${pr.dia}</div>
-              <div class="pp-val ${pr.modelo?'modelo':''}">${pr.val}</div>
-              ${pr.modelo?'<div class="pp-flag">modelo *</div>':''}
-            </div>`).join('')}
+    </div>
+    <div class="logo-block lb-b">
+      <div class="lb-tag">Versão Inversa · Fundo Claro</div>
+      <div class="lv-wrap">
+        <div class="lv-c">Carro</div>
+        <div class="lv-line"></div>
+        <div class="lv-ch">Chefe</div>
+      </div>
+    </div>
+    <div class="logo-block lb-c">
+      <div class="lb-tag">Versão Areia · Fundos Neutros</div>
+      <div class="lv-wrap">
+        <div class="lv-c">Carro</div>
+        <div class="lv-line"></div>
+        <div class="lv-ch">Chefe</div>
+      </div>
+    </div>
+    <div class="logo-block lb-d">
+      <div class="lb-tag">Versão Tijolo · Fundos de Acento</div>
+      <div class="lv-wrap">
+        <div class="lv-c">Carro</div>
+        <div class="lv-line"></div>
+        <div class="lv-ch">Chefe</div>
+      </div>
+    </div>
+  </div>
+  <div class="mono-grid">
+    <div class="mono-block">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div class="label dark-txt" style="margin-bottom:0">Monograma</div>
+        <div class="mono-ring"><div class="mono-text">Cc</div></div>
+        <div style="font-family:'Poppins',sans-serif;font-size:9px;color:var(--cinza);text-align:center;letter-spacing:.5px;line-height:1.7;max-width:200px">Uso em perfis digitais, selos, tags e aplicações de espaço reduzido</div>
+      </div>
+    </div>
+    <div class="rules-block">
+      <div class="label dark-txt" style="margin-bottom:12px">Regras de Uso</div>
+      <div class="rule-item"><strong>Espaçamento mínimo:</strong> Área livre igual a ½ altura da letra "C" em todos os lados do logo.</div>
+      <div class="rule-item"><strong>Tamanho mínimo digital:</strong> 120px de altura para o logotipo completo. Abaixo disso, usar somente o monograma.</div>
+      <div class="rule-item"><strong>Proporções:</strong> Nunca redimensionar de forma desproporcional. Nunca inclinar, rotacionar ou distorcer o logo.</div>
+      <div class="rule-item"><strong>Fundos proibidos:</strong> Não usar sobre fotos sem sobreposição de overlay. Não usar sobre fundos com cores conflitantes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 02 · CORES ════════════════ -->
+<div class="sec">
+  <div class="sec-bg-num">02</div>
+  <div class="label">Paleta de Cores</div>
+  <div class="color-hero-strip">
+    <div class="chr-ghost">Tijolo</div>
+    <div class="chr-label">Cor Principal · Acento de Marca</div>
+    <div class="chr-name">Tijolo Paulistano</div>
+    <div class="chr-codes">
+      <div class="chr-code-item"><div class="chr-code-key">HEX</div><div class="chr-code-val">#C94B2C</div></div>
+      <div class="chr-code-item"><div class="chr-code-key">RGB</div><div class="chr-code-val">201 · 75 · 44</div></div>
+      <div class="chr-code-item"><div class="chr-code-key">CMYK</div><div class="chr-code-val">0 · 63 · 78 · 21</div></div>
+      <div class="chr-code-item"><div class="chr-code-key">Uso</div><div class="chr-code-val">Acento, CTA, Destaques, Ornamentos</div></div>
+    </div>
+  </div>
+  <div class="color-swatch-row">
+    <div class="cs-item">
+      <div class="cs-block" style="background:#181310;"></div>
+      <div class="cs-info"><div class="cs-name">Preto</div><div class="cs-hex">#181310</div><div class="cs-role">Fundo Principal</div></div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-block" style="background:#28201A;"></div>
+      <div class="cs-info"><div class="cs-name">Carvão</div><div class="cs-hex">#28201A</div><div class="cs-role neutral">Fundo Alt.</div></div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-block" style="background:#F5F0E8;border:1px solid var(--areia);"></div>
+      <div class="cs-info"><div class="cs-name">Offwhite</div><div class="cs-hex">#F5F0E8</div><div class="cs-role neutral">Fundo Claro</div></div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-block" style="background:#E0D5C5;"></div>
+      <div class="cs-info"><div class="cs-name">Areia</div><div class="cs-hex">#E0D5C5</div><div class="cs-role neutral">Bordas</div></div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-block" style="background:#C4B49A;"></div>
+      <div class="cs-info"><div class="cs-name">Areia Esc.</div><div class="cs-hex">#C4B49A</div><div class="cs-role neutral">Texto Sec.</div></div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-block" style="background:#9A8F85;"></div>
+      <div class="cs-info"><div class="cs-name">Cinza</div><div class="cs-hex">#9A8F85</div><div class="cs-role neutral">Labels</div></div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-block" style="background:#4A6040;"></div>
+      <div class="cs-info"><div class="cs-name">Musgo</div><div class="cs-hex">#4A6040</div><div class="cs-role green">Acento Ter.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 03 · TIPOGRAFIA ════════════════ -->
+<div class="sec sand">
+  <div class="sec-bg-num">03</div>
+  <div class="label">Sistema Tipográfico</div>
+  <div class="type-pair">
+    <div class="type-col">
+      <div class="type-head">
+        <div class="type-family-name">Lora</div>
+        <div class="type-class">Serif · Display · Títulos</div>
+      </div>
+      <div class="type-big-serif">Celebrar<br>é aqui.</div>
+      <div class="type-weights">
+        <div class="tw-row"><div class="tw-label">Regular 400</div><div class="tw-sample" style="font-family:'Lora',serif;font-weight:400">Onde o bairro celebra</div></div>
+        <div class="tw-row"><div class="tw-label">Regular It.</div><div class="tw-sample" style="font-family:'Lora',serif;font-weight:400;font-style:italic">Onde o bairro celebra</div></div>
+        <div class="tw-row"><div class="tw-label">Medium 500</div><div class="tw-sample" style="font-family:'Lora',serif;font-weight:500">Onde o bairro celebra</div></div>
+        <div class="tw-row"><div class="tw-label">Medium It.</div><div class="tw-sample" style="font-family:'Lora',serif;font-weight:500;font-style:italic">Onde o bairro celebra</div></div>
+        <div class="tw-row"><div class="tw-label">Bold 700</div><div class="tw-sample" style="font-family:'Lora',serif;font-weight:700">Onde o bairro celebra</div></div>
+      </div>
+    </div>
+    <div class="type-col">
+      <div class="type-head">
+        <div class="type-family-name">Poppins</div>
+        <div class="type-class">Sans-Serif · Corpo · Labels</div>
+      </div>
+      <div class="type-big-sans">Eventos<br>reais.</div>
+      <div class="type-weights">
+        <div class="tw-row"><div class="tw-label">Light 300</div><div class="tw-sample" style="font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:2px;font-size:13px">CARRO · CHEFE · EVENTOS</div></div>
+        <div class="tw-row"><div class="tw-label">Regular 400</div><div class="tw-sample" style="font-family:'Poppins',sans-serif;font-weight:400">Aqui é o lugar.</div></div>
+        <div class="tw-row"><div class="tw-label">Medium 500</div><div class="tw-sample" style="font-family:'Poppins',sans-serif;font-weight:500">Reservas &amp; Contato</div></div>
+        <div class="tw-row"><div class="tw-label">Semibold 600</div><div class="tw-sample" style="font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:1px;font-size:14px">FESTA PRIVADA</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="type-use-grid">
+    <div class="tug-card">
+      <div class="tug-label">Display · Lora Italic</div>
+      <div class="tug-ex-1">Sua festa merece<br>esse espaço.</div>
+      <div class="tug-note">Headlines de campanha, taglines, citações de marca, posters de evento</div>
+    </div>
+    <div class="tug-card">
+      <div class="tug-label">Corpo · Poppins Regular 12px</div>
+      <div class="tug-ex-3">O Carro Chefe é o espaço de referência de Cidade Líder para quem quer celebrar sem abrir mão de qualidade — e sem precisar cruzar a cidade para ter uma festa à altura.</div>
+      <div class="tug-note">Textos de apoio, descrições, copy de postagens e landing pages</div>
+    </div>
+    <div class="tug-card">
+      <div class="tug-label">Label · Poppins Light, tracking</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+        <div class="tug-ex-4" style="color:var(--tijolo)">Tier 1 · Prioridade Máxima</div>
+        <div class="tug-ex-4">Cidade Líder · Zona Leste · SP</div>
+        <div class="tug-ex-4" style="color:var(--musgo)">Artista Regional · Pagode</div>
+      </div>
+      <div class="tug-note">Labels, categorias, chips de evento, metatexto, informações operacionais</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 04 · ELEMENTOS VISUAIS ════════════════ -->
+<div class="sec">
+  <div class="sec-bg-num">04</div>
+  <div class="label">Elementos Visuais</div>
+  <div class="elem-grid">
+    <div class="elem-cell">
+      <div class="elem-title">Ornamento de Linha</div>
+      <div style="width:100%;display:flex;flex-direction:column;gap:14px">
+        <div class="orn-line-wrap"><div class="orn-line"></div><div class="orn-dia"></div><div class="orn-line"></div></div>
+        <div class="orn-line-wrap"><div class="orn-line" style="background:var(--areia-esc)"></div><div class="orn-dia sm" style="background:var(--areia-esc)"></div><div class="orn-dia" style="background:var(--areia-esc)"></div><div class="orn-dia sm" style="background:var(--areia-esc)"></div><div class="orn-line" style="background:var(--areia-esc)"></div></div>
+        <div class="orn-line-wrap" style="justify-content:center"><div class="vertical-sep"></div></div>
+      </div>
+    </div>
+    <div class="elem-cell">
+      <div class="elem-title">Padrão Diagonal</div>
+      <div class="pattern-dia"></div>
+    </div>
+    <div class="elem-cell">
+      <div class="elem-title">Moldura Editorial</div>
+      <div class="frame-box">
+        <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="frame-text">Aqui é<br>o lugar.</div>
+      </div>
+    </div>
+    <div class="elem-cell">
+      <div class="elem-title">Separadores</div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:center;width:100%">
+        <div class="sep-dia-row"><div class="sep-d tiny"></div><div class="sep-d"></div><div class="sep-d tiny"></div></div>
+        <div class="sep-dia-row">
+          <div style="width:20px;height:1px;background:var(--cinza)"></div>
+          <div class="sep-d" style="width:5px;height:5px;background:var(--cinza)"></div>
+          <div class="sep-d" style="width:3px;height:3px;background:var(--cinza);opacity:.4"></div>
+          <div class="sep-d" style="width:5px;height:5px;background:var(--cinza)"></div>
+          <div style="width:20px;height:1px;background:var(--cinza)"></div>
+        </div>
+        <div style="width:1px;height:36px;background:linear-gradient(var(--tijolo),transparent)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 05 · PERSONALIDADE ════════════════ -->
+<div class="sec sand">
+  <div class="sec-bg-num">05</div>
+  <div class="label">Personalidade &amp; Voz</div>
+  <div style="max-width:620px;margin-bottom:40px">
+    <div style="font-family:'Lora',serif;font-size:26px;color:var(--preto);line-height:1.35;margin-bottom:16px">A voz do Carro Chefe é a de quem conhece o bairro de dentro — e fala com ele como igual.</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:12px;color:var(--carvao);line-height:1.95">Direta, calorosa, festiva sem ser superficial. Quando fala de evento, faz o cliente sentir que aquela data já tem endereço certo.</div>
+  </div>
+  <div class="pers-strip">
+    <div class="pers-card"><div class="pc-num">01</div><div class="pc-trait">Acolhedor</div><div class="pc-not">genérico demais</div></div>
+    <div class="pers-card"><div class="pc-num">02</div><div class="pc-trait">Animado</div><div class="pc-not">frenético</div></div>
+    <div class="pers-card"><div class="pc-num">03</div><div class="pc-trait">Acessível</div><div class="pc-not">ordinário</div></div>
+    <div class="pers-card"><div class="pc-num">04</div><div class="pc-trait">Confiável</div><div class="pc-not">burocrático</div></div>
+    <div class="pers-card"><div class="pc-num">05</div><div class="pc-trait">Do bairro</div><div class="pc-not">provinciano</div></div>
+  </div>
+  <div class="archetype-section">
+    <div>
+      <div class="label" style="margin-bottom:16px">Arquétipo</div>
+      <div class="arch-big">O Dono<br>do Pedaço</div>
+      <div class="arch-body">Entre o Cara Comum e o Animador. O Carro Chefe é a referência territorial — o espaço que o bairro reconhece como seu. Esse vínculo não se compra com desconto, se constrói com consistência e presença.</div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:16px">Tagline · Recomendada</div>
+      <div class="tagline-feature">
+        <div class="tf-main">"Aqui é<br>o lugar."</div>
+        <div class="tf-desc">Direta, territorial, evoca pertencimento imediato. Funciona para qualquer tipo de evento e qualquer canal. Captura a linguagem orgânica que o cliente já usa para indicar o Carro Chefe.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 06 · VOZ ════════════════ -->
+<div class="sec">
+  <div class="sec-bg-num">06</div>
+  <div class="label">Voz de Marca em Prática</div>
+  <div class="voice-box">
+    <p>Não tenta ser sofisticado demais, mas também não se contenta com o básico. Quando anuncia show, a legenda já faz o corpo se preparar pra sair de casa. Quando fala de festa, a primeira frase já responde à principal dúvida do cliente: <em>esse lugar vai me envergonhar na frente dos convidados?</em></p>
+  </div>
+  <div class="voice-examples">
+    <div class="ve-card">
+      <div class="ve-label">Post · Festa Privada</div>
+      <div class="ve-text">"Aniversário, batizado, formatura — 15 anos de conquista merecem um lugar à altura. Reservas abertas para o segundo semestre."</div>
+    </div>
+    <div class="ve-card">
+      <div class="ve-label">Story · Show de Pagode</div>
+      <div class="ve-text">"Sábado. Pagode. Carro Chefe. Arrasta pra cima e garante sua mesa antes de esgotar."</div>
+    </div>
+    <div class="ve-card">
+      <div class="ve-label">Resposta · DM Corporativo</div>
+      <div class="ve-text">"Oi! Pra confraternização de fim de ano: espaço, bar e música tudo aqui. Mando o kit de proposta por e-mail hoje?"</div>
+    </div>
+    <div class="ve-card">
+      <div class="ve-label">Bio · Instagram</div>
+      <div class="ve-text">"O espaço da Zona Leste pra quem quer celebrar de verdade. Shows · Festas · Eventos 📍 Cidade Líder · SP"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 07 · DIFERENCIAIS ════════════════ -->
+<div class="sec sand">
+  <div class="sec-bg-num">07</div>
+  <div class="label">Os Três Diferenciais</div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-num">01</div>
+      <div class="diff-title">Tudo num só lugar</div>
+      <div class="diff-body">Espaço moderno, bar estruturado, música ao vivo e camarotes — sem precisar contratar fornecedores separados. Para quem organiza eventos, isso não é conveniência: é o fator decisivo.</div>
+      <div class="diff-proof">"Um orçamento. Uma ligação. Um endereço."</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">02</div>
+      <div class="diff-title">O espaço que o bairro merecia</div>
+      <div class="diff-body">Cidade Líder não tinha um espaço moderno de eventos. Esse vácuo é um ativo estratégico. Quando o cliente compara o Carro Chefe com alternativas locais, a percepção de qualidade cria uma distância difícil de superar.</div>
+      <div class="diff-proof">"O único espaço do bairro que não preciso desculpar pros convidados."</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">03</div>
+      <div class="diff-title">Hospitalidade de quem é daqui</div>
+      <div class="diff-body">O Carro Chefe não é uma rede. Tem donos que conhecem o bairro e clientes que voltam porque foram bem tratados. Essa autenticidade cria fidelidade que nenhum desconto compra.</div>
+      <div class="diff-proof">"Senti que era da família — não que era cliente."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 08 · APLICAÇÕES ════════════════ -->
+<div class="sec deep">
+  <div class="sec-bg-num">08</div>
+  <div class="label fire">Aplicações</div>
+  <div class="app-row">
+    <div>
+      <div class="app-label">Post Instagram · Quadrado 1:1</div>
+      <div class="ig-post">
+        <div class="igp-glow"></div>
+        <div class="igp-corner">
+          <div class="igp-logo-sm">
+            <div class="igp-l-c">Carro</div>
+            <div class="igp-l-r"></div>
+            <div class="igp-l-ch">Chefe</div>
+          </div>
+          <div class="igp-loc">Cidade Líder · ZL</div>
+        </div>
+        <div class="igp-content">
+          <div class="igp-tag">Festa Privada · Reservas Abertas</div>
+          <div class="igp-title">Seu aniversário<br>merece esse endereço.</div>
+          <div class="igp-sub">Zona Leste · São Paulo</div>
         </div>
       </div>
-      <div class="pack-tag" style="color:${p.pc};border-color:${p.pc}">◈ ${p.persona} · ${p.tag}</div>
-      <div class="pack-why">${p.why}</div>
-    </div>`;
-}
-
-function renderPacotes(){
-  const t1 = PACOTES.filter(p=>p.tier===1);
-  const t2 = PACOTES.filter(p=>p.tier===2);
-  const entradas = ENTRADAS.map(e=>`
-    <div class="entrada-row">
-      <div class="er-c">
-        <div class="er-l">Persona</div>
-        <div class="er-persona" style="color:${e.c}">${e.persona}</div>
-        <div class="er-role">${e.role}</div>
-      </div>
-      <div class="er-c">
-        <div class="er-l">Ponto de entrada</div>
-        <div class="er-entrada">${e.entrada}</div>
-        <div class="er-txt">${e.porque}</div>
-      </div>
-      <div class="er-c">
-        <div class="er-l">Expansão natural</div>
-        <div class="er-exp">${e.expansao}</div>
-      </div>
-    </div>`).join('');
-
-  document.getElementById('tab-pacotes').innerHTML=`
-    <div class="insight">
-      <div class="ins-l">Arquitetura do portfólio</div>
-      <div class="ins-t">O Carro Chefe não vende locação — vende ocasião. A diferença está em como cada tipo de evento é apresentado, para quem e com qual argumento. Esta hierarquia foi definida por frequência, ticket, potencial de recorrência e fit com a infraestrutura atual do espaço.</div>
     </div>
-
-    <div class="tier-row">
-      <div class="tier-badge" style="color:var(--tijolo);border-color:var(--tijolo)">Tier 1 · Prioridade Máxima</div>
-      <div class="tier-line"></div>
-    </div>
-    <div class="pack-grid cols2">${t1.map(packHTML).join('')}</div>
-
-    <div class="tier-row" style="margin-top:32px">
-      <div class="tier-badge" style="color:var(--cinza);border-color:var(--cinza)">Tier 2 · Alta Prioridade</div>
-      <div class="tier-line"></div>
-    </div>
-    <div class="pack-grid cols2">${t2.map(packHTML).join('')}</div>
-
-    <div style="font-size:9px;color:var(--cinza);font-style:italic;margin-bottom:40px;padding-left:4px">
-      * Valores marcados como "modelo" são referências de mercado sugeridas para espaços de evento em São Paulo/Zona Leste. Aguardando confirmação do Carro Chefe para inserir os valores reais na tabela oficial.
-    </div>
-
-    <div class="sec-hd">
-      <div class="sec-lb">Pontos de entrada por persona</div>
-      <div class="sec-ln"></div>
-    </div>
-    <div class="entrada-wrap">${entradas}</div>`;
-}
-
-function renderEspaco(){
-  const hero = [
-    {l:'Capacidade',v:'100',s:'pessoas — configuração padrão'},
-    {l:'Localização',v:'Cidade Líder',s:'Zona Leste · São Paulo'},
-    {l:'Espaço',v:'All-in-one',s:'som + palco + bar + camarote'},
-    {l:'Posição',v:'#1',s:'espaço de referência no bairro'},
-  ];
-
-  document.getElementById('tab-espaco').innerHTML=`
-    <div class="insight">
-      <div class="ins-l">O espaço como argumento</div>
-      <div class="ins-t">"Cidade Líder não tinha um espaço assim. Quem chega primeiro define o padrão. Quando o cliente compara o Carro Chefe com alternativas locais, a percepção de qualidade cria uma distância difícil de superar — sem necessidade de preço premium."</div>
-    </div>
-
-    <div class="sec-hd" style="margin-top:0">
-      <div class="sec-lb">Estrutura & posicionamento</div><div class="sec-ln"></div>
-    </div>
-    <div class="space-hero">
-      ${hero.map(h=>`
-        <div class="sh-card">
-          <div class="shc-l">${h.l}</div>
-          <div class="shc-v">${h.v}</div>
-          <div class="shc-s">${h.s}</div>
-        </div>`).join('')}
-    </div>
-
-    <div class="sec-hd">
-      <div class="sec-lb">O que está incluído em todos os pacotes</div><div class="sec-ln"></div>
-    </div>
-    <div class="inclui-grid">
-      ${INCLUI_PADRAO.map(i=>`
-        <div class="inc-card">
-          <div class="inc-icon">${i.icon}</div>
-          <div class="inc-nome">${i.nome}</div>
-          <div class="inc-desc">${i.desc}</div>
-        </div>`).join('')}
-    </div>
-
-    <div class="sec-hd">
-      <div class="sec-lb">Infraestrutura técnica</div><div class="sec-ln"></div>
-    </div>
-    <div class="tech-grid">
-      ${TECH_SPECS.map(t=>`
-        <div class="tech-blk">
-          <div class="tech-l">${t.cat}</div>
-          ${t.items.map(i=>`
-            <div class="tech-item">
-              <div class="tech-d"></div>
-              <span class="tech-t">${i}</span>
-            </div>`).join('')}
-        </div>`).join('')}
-    </div>`;
-}
-
-function renderAddons(){
-  const addHTML = ADDONS.map((a,i)=>`
-    <div class="addon">
-      <div class="addon-h" onclick="togAddon(${i})" id="adh-${i}">
-        <div>
-          <div class="ah-nome">${a.nome}</div>
-          <div class="ah-sub">${a.sub}</div>
+    <div>
+      <div class="app-label">Story Instagram · 9:16</div>
+      <div class="ig-story">
+        <div class="igs-diag"></div>
+        <div class="igs-top">
+          <div class="igs-eyebrow">Esta semana · Carro Chefe</div>
+          <div class="igs-headline">Aqui é<br>o lugar.</div>
         </div>
-        <div class="ah-right">
-          <div class="ah-preco ${a.modelo?'modelo':''}">${a.preco}<span style="font-family:'Poppins',sans-serif;font-size:9px;color:var(--cinza)"> ${a.unit}</span></div>
-          ${a.modelo?'<div class="ah-flag">modelo *</div>':''}
+        <div class="igs-bottom">
+          <div class="igs-cta">Arraste pra cima e reserve seu evento</div>
+          <div class="igs-logo">Carro Chefe</div>
         </div>
       </div>
-      <div class="addon-body" id="adb-${i}">
-        <div class="ab-desc">${a.desc}</div>
-        <div class="ab-tip">💡 ${a.tip}</div>
-      </div>
-    </div>`).join('');
-
-  const showHTML = SHOW_MODELS.map(sm=>`
-    <div class="sm-card ${sm.tipo}">
-      <div class="sm-l">${sm.label}</div>
-      <div class="sm-nome">${sm.nome}</div>
-      ${sm.rows.map(r=>`
-        <div class="sm-row">
-          <span class="sm-k">${r.k}</span>
-          <span class="sm-v">${r.v}</span>
-        </div>`).join('')}
-      <div class="sm-note">${sm.note}</div>
-    </div>`).join('');
-
-  document.getElementById('tab-addons').innerHTML=`
-    <div class="insight">
-      <div class="ins-l">Personalizar é estratégico</div>
-      <div class="ins-t">Add-ons bem posicionados aumentam o ticket sem alterar a estrutura de preço base. Para o cliente, é a percepção de que o Carro Chefe entrega exatamente o que ele precisa. Para o negócio, é margem adicional com custo operacional já amortizado.</div>
     </div>
-
-    <div class="sec-hd" style="margin-top:0">
-      <div class="sec-lb">Clique para expandir cada add-on</div><div class="sec-ln"></div>
-    </div>
-    <div class="addon-list">${addHTML}</div>
-
-    <div style="font-size:9px;color:var(--cinza);font-style:italic;margin-bottom:40px;padding-left:4px">
-      * Valores modelo — referências de mercado para São Paulo. Confirmar com o CF antes de incluir na tabela oficial de preços.
-    </div>
-
-    <div class="sec-hd">
-      <div class="sec-lb">Modelos comerciais para shows</div><div class="sec-ln"></div>
-    </div>
-    <div class="show-models">${showHTML}</div>`;
-}
-
-function renderExperiencia(){
-  const fasesHTML = FASES.map(f=>`
-    <div class="fase-row ${f.critica?'critica':''}">
-      <div class="fr-n">
-        <div class="fn-num">${f.num}</div>
-        <div class="fn-nome">${f.nome}</div>
-        ${f.critica?'<div class="fn-critico">Momento Crítico</div>':''}
-      </div>
-      <div class="fr-o">
-        <div class="fr-l">O quê</div>
-        <div class="fr-t">${f.oque}</div>
-      </div>
-      <div class="fr-c">
-        <div class="fr-l">Como</div>
-        <div class="fr-t">${f.como}</div>
-        <div class="fr-nota">${f.nota}</div>
-      </div>
-    </div>`).join('');
-
-  document.getElementById('tab-experiencia').innerHTML=`
-    <div class="insight">
-      <div class="ins-l">A contratação como experiência</div>
-      <div class="ins-t">"O Carro Chefe não vende apenas um espaço — vende a confiança de que a festa vai acontecer do jeito certo. Cada etapa da contratação precisa confirmar essa promessa: da primeira resposta no WhatsApp até o pós-evento."</div>
-    </div>
-
-    <div class="alerta">
-      <div class="alert-icon">⚑</div>
-      <div>
-        <div class="alert-l">Ponto de atenção estratégico</div>
-        <div class="alert-t">A Fase 02 — Visita ao Espaço — é o ponto de conversão mais crítico de toda a jornada do CF. Um lead que visita o espaço tem taxa de conversão significativamente maior do que um que decide apenas por fotos e WhatsApp. Priorizar o agendamento de visitas como primeira ação após o contato inicial.</div>
+  </div>
+  <div class="bcard-row">
+    <div>
+      <div class="app-label">Cartão de Visita · Frente</div>
+      <div class="bcard front">
+        <div class="bc-wrap">
+          <div class="bc-c">Carro</div>
+          <div class="bc-r"></div>
+          <div class="bc-ch">Chefe</div>
+        </div>
       </div>
     </div>
-
-    <div class="sec-hd" style="margin-top:0">
-      <div class="sec-lb">As seis fases da contratação</div><div class="sec-ln"></div>
+    <div>
+      <div class="app-label">Cartão de Visita · Verso</div>
+      <div class="bcard back">
+        <div class="bcb-wrap">
+          <div class="bcb-name">Ana Cardoso</div>
+          <div class="bcb-title">Eventos &amp; Reservas</div>
+          <div class="bcb-info">(11) 9 9999-0000<br>eventos@carrochefe.com.br<br>Cidade Líder · Zona Leste · SP</div>
+        </div>
+      </div>
     </div>
-    <div class="fases-wrap">${fasesHTML}</div>`;
-}
+  </div>
+</div>
 
-/* ── INTERACTION ─────────────────────────────────────────────── */
+<!-- ════════════════ 09 · STATEMENT ════════════════ -->
+<div class="sec dark">
+  <div class="label fire">Declaração de Posicionamento · Uso Interno</div>
+  <div class="pos-statement">Para quem mora na Zona Leste e quer celebrar sem abrir mão de qualidade, o Carro Chefe é o espaço de eventos de referência de Cidade Líder — porque entendemos que uma festa, um show ou uma confraternização não é apenas uma locação: é a ocasião que as pessoas vão lembrar. Por isso, entregamos estrutura, serviço e ambiente num único endereço. E esse endereço é aqui.</div>
+  <div class="pos-note">Para uso em briefings e alinhamento interno. A essência deve aparecer na experiência e na comunicação — não como texto publicitário literal.</div>
+</div>
 
-function togAddon(i){
-  document.getElementById('adb-'+i).classList.toggle('open');
-  document.getElementById('adh-'+i).classList.toggle('open');
-}
+<!-- ════════════════ FOOTER ════════════════ -->
+<div class="doc-footer">
+  <div class="footer-logo">
+    <div class="fl-c">Carro</div>
+    <div class="fl-r"></div>
+    <div class="fl-ch">Chefe</div>
+  </div>
+  <div class="footer-info">
+    <span>Sistema de Identidade Visual · v1.0</span>
+    UP Agência · Uso Interno<br>
+    Estratégia &amp; Posicionamento · 2025
+  </div>
+</div>
 
-function goTab(id, btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
-  document.getElementById('tab-'+id).classList.add('on');
-  btn.classList.add('on');
-  window.scrollTo({top:65,behavior:'smooth'});
-}
-
-/* ── INIT ──────────────────────────────────────────────────────── */
-renderPacotes();
-renderEspaco();
-renderAddons();
-renderExperiencia();
-</script>
 </body>
 </html>
